@@ -52,7 +52,7 @@ class OnBoardingScreenBody1 extends StatelessWidget {
         Gap(40.s),
         CustomButton(
           onPressed: () {
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => OnboardingScreen2()),
             );

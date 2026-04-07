@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/start-up/onBoarding/customs/custom_container.dart';
 

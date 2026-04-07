@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
-import 'package:marketi/features/start-up/onBoarding/screens/onBoarding_screen2.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
