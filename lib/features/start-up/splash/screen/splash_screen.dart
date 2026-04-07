@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/start-up/onBoarding/screens/onBoarding_screen1.dart';
@@ -15,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => OnboardingScreen()),
+        MaterialPageRoute(builder: (context) => OnboardingScreen1()),
       );
     });
     super.initState();

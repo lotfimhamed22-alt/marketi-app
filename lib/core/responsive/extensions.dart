@@ -1,3 +1,5 @@
+// ignore_for_file: strict_top_level_inference
+
 import 'package:marketi/core/responsive/dimensions.dart';
 
 extension Extensions on num {

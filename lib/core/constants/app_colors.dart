@@ -1,6 +1,10 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/animation.dart';
 
 class AppColors {
   static final ContainerColorPrimary = Color(0xff001640);
   static final ContainerColorSecondry = Color(0xffB2CCFF);
+  static final myBlue = Color(0xff3F80FF);
+  static final myWhite = Color(0xffffffff);
 }
