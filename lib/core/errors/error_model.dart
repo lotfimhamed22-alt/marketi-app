@@ -1,6 +1,6 @@
 class ErrorModel {
-  final int status;
-  final String errorMessage;
+  final dynamic status;
+  final dynamic errorMessage;
 
   ErrorModel({required this.status, required this.errorMessage});
 

@@ -11,4 +11,5 @@ class AppColors {
   static final labeTextColor = Color(0xff929BAB);
   static final myNavy = Color(0xff51526C);
   static final light_blue = Color(0xff3F80FF);
+  static final myRed = Color(0xFFbc0e02);
 }

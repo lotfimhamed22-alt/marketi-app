@@ -59,8 +59,9 @@ class OnBoardingScreenBody1 extends StatelessWidget {
           },
           text: 'Next',
           fontSize: 18.s,
-          color: AppColors.myWhite,
           fontWeight: FontWeight.w500,
+          colorText: AppColors.myWhite,
+          colorBackGroundButton: AppColors.myBlue,
         ),
       ],
     );

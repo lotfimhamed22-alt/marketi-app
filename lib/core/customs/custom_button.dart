@@ -7,20 +7,22 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.fontSize,
-    required this.color,
     required this.fontWeight,
     this.onPressed,
+    required this.colorText,
+    required this.colorBackGroundButton,
   });
   final String text;
   final double fontSize;
-  final Color color;
+  final Color colorText;
   final FontWeight fontWeight;
   final void Function()? onPressed;
+  final Color colorBackGroundButton;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: AppColors.myBlue,
+      color: colorBackGroundButton,
       minWidth: 347.w,
       height: 48.h,
       shape: ShapeBorder.lerp(
@@ -32,7 +34,7 @@ class CustomButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: color,
+          color: colorText,
           fontSize: fontSize,
           fontWeight: fontWeight,
         ),
