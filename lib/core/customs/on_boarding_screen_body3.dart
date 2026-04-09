@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
-import 'package:marketi/features/start-up/onBoarding/customs/custom_button.dart';
-import 'package:marketi/features/start-up/onBoarding/customs/custom_image_on_boarding.dart';
-import 'package:marketi/features/start-up/onBoarding/customs/custom_row_container.dart';
-import 'package:marketi/features/start-up/onBoarding/customs/custom_text.dart';
+import 'package:marketi/core/customs/custom_button.dart';
+import 'package:marketi/core/customs/custom_image_on_boarding.dart';
+import 'package:marketi/core/customs/custom_row_container.dart';
+import 'package:marketi/core/customs/custom_text.dart';
+import 'package:marketi/features/auth/presentation/view/screens/log_in_screen.dart';
 
 class OnBoardingScreenBody3 extends StatelessWidget {
   const OnBoardingScreenBody3({super.key});
@@ -50,11 +51,10 @@ class OnBoardingScreenBody3 extends StatelessWidget {
         Gap(138.s),
         CustomButton(
           onPressed: () {
-            // Navigate to the next screen or perform any action
-            // Navigator.pushReplacement(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => LoginScreen()),
-            // );
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => LogInScreen()),
+            );
           },
           text: 'Get Start',
           fontSize: 18.s,

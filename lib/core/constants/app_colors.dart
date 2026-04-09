@@ -7,4 +7,8 @@ class AppColors {
   static final ContainerColorSecondry = Color(0xffB2CCFF);
   static final myBlue = Color(0xff3F80FF);
   static final myWhite = Color(0xffffffff);
+  static final myBorderColor = Color(0xffB2CCFF);
+  static final labeTextColor = Color(0xff929BAB);
+  static final myNavy = Color(0xff51526C);
+  static final light_blue = Color(0xff3F80FF);
 }

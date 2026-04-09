@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:marketi/core/responsive/extensions.dart';
-import 'package:marketi/features/start-up/onBoarding/customs/custom_container.dart';
+import 'package:marketi/core/customs/custom_container.dart';
 
 class CustomRowContainer extends StatelessWidget {
   const CustomRowContainer({
@@ -39,14 +39,14 @@ class CustomRowContainer extends StatelessWidget {
           borderRadius: 80.r,
           color: color1,
         ),
-        Gap(4),
+        Gap(7),
         CustomContainer(
           width: width2.w,
           height: height2.h,
           borderRadius: 80.r,
           color: color2,
         ),
-        Gap(4),
+        Gap(7),
 
         CustomContainer(
           width: width3.w,

@@ -1,6 +1,8 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:marketi/features/start-up/onBoarding/customs/on_boarding_screen_body3.dart';
+import 'package:marketi/core/customs/on_boarding_screen_body3.dart';
 
 class OnboardingScreen3 extends StatelessWidget {
   const OnboardingScreen3({super.key});
