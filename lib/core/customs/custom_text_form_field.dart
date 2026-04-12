@@ -5,15 +5,17 @@ import 'package:marketi/core/responsive/extensions.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.lableText,
+    this.lableText,
     required this.prefixIcon,
     this.suffixIcon,
     this.onTap,
     required this.controller,
     this.obscureText,
     this.validator,
+    this.hintText,
   });
-  final String lableText;
+  final String? lableText;
+  final String? hintText;
   final IconData prefixIcon;
   final IconData? suffixIcon;
   final void Function()? onTap;
@@ -28,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         labelText: lableText,
-
+        hintText: hintText,
         labelStyle: TextStyle(
           color: AppColors.labeTextColor,
           fontSize: 16.s,

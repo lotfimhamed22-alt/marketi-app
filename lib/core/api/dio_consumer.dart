@@ -78,7 +78,7 @@ class DioConsumer extends ApiConsumer {
   }
 
   @override
-  Future<void> post(
+  Future<Map<String, dynamic>> post(
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -94,5 +94,6 @@ class DioConsumer extends ApiConsumer {
     } on DioException catch (e) {
       handleDioException(e);
     }
+    return {};
   }
 }

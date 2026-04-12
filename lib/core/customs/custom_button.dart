@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomButton extends StatelessWidget {

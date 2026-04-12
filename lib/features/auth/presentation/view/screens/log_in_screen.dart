@@ -1,16 +1,21 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:marketi/core/api/dio_consumer.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
+import 'package:marketi/core/customs/custom_row_text.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/customs/custom_image_on_boarding.dart';
+import 'package:marketi/features/Home/presentation/view/home_page.dart';
 import 'package:marketi/features/auth/presentation/view/screens/sign_up_screen.dart';
+import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
 import 'package:marketi/features/auth/presentation/view_model/signin_cubit/cubit/sign_in_cubit.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -86,14 +91,6 @@ class _LogInScreenState extends State<LogInScreen> {
                     if (value.length < 8) {
                       return "Password must be at least 8 characters";
                     }
-
-                    // final passwordRegex = RegExp(
-                    //   r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$',
-                    // );
-
-                    // if (!passwordRegex.hasMatch(value)) {
-                    //   return "Password must contain upper, lower, number & special char";
-                    // }
                     return null;
                   },
                 ),
@@ -107,41 +104,49 @@ class _LogInScreenState extends State<LogInScreen> {
                 Gap(35.h),
                 BlocConsumer<SignInCubit, SignInState>(
                   listener: (context, state) {
-                    if (state is SignInLoading) {
-                      Center(child: CircularProgressIndicator());
-                    } else if (state is SignInSuccess) {
+                    if (state is SignInSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Login Successfully")),
+                        SnackBar(content: Text("Login Successfully")),
+                      );
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => HomePage()),
                       );
                     }
                     if (state is SignInFailure) {
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text(state.message)));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: AppColors.myRed,
+                          content: Text(
+                            "You Don't Have An Account , register now",
+                          ),
+                        ),
+                      );
                     }
                   },
                   builder: (context, state) {
-                    return CustomButton(
-                      text: "Log In",
-                      fontSize: 20.s,
-                      colorText: AppColors.myWhite,
-                      colorBackGroundButton: isCkecked
-                          ? AppColors.myBlue
-                          : Colors.grey.shade400,
-                      fontWeight: FontWeight.w800,
-                      onPressed: () {
-                        // if (isCkecked == false) {
-                        //   return null;
-                        // }
-                        if (isCkecked == true) {
-                          _formKey.currentState!.validate() &&
-                              context.read<SignInCubit>().signIn(
-                                _emailController.text,
-                                _passwordController.text,
-                              );
-                        }
-                      },
-                    );
+                    return state is SignInLoading
+                        ? Center(child: CircularProgressIndicator())
+                        : CustomButton(
+                            text: "Log In",
+                            fontSize: 20.s,
+                            colorText: AppColors.myWhite,
+                            colorBackGroundButton: isCkecked
+                                ? AppColors.myBlue
+                                : Colors.grey.shade400,
+                            fontWeight: FontWeight.w800,
+                            onPressed: () {
+                              if (isCkecked == true) {
+                                _formKey.currentState!.validate();
+                                if (_formKey.currentState!.validate()) {
+                                  context.read<SignInCubit>().signIn(
+                                    _emailController.text,
+                                    _passwordController.text,
+                                  );
+                                }
+                              }
+                            },
+                          );
                   },
                 ),
                 Gap(35.h),
@@ -158,7 +163,11 @@ class _LogInScreenState extends State<LogInScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
+                            builder: (context) => BlocProvider(
+                              create: (context) =>
+                                  SignUpCubit(DioConsumer(dio: Dio())),
+                              child: SignUpScreen(),
+                            ),
                           ),
                         );
                       },
@@ -175,40 +184,6 @@ class _LogInScreenState extends State<LogInScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CustomRowTexts extends StatelessWidget {
-  const CustomRowTexts({super.key, this.onChanged, required this.isCkecked});
-  final void Function(bool?)? onChanged;
-  final bool isCkecked;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Checkbox(
-          activeColor: AppColors.myBlue,
-          value: isCkecked,
-          onChanged: onChanged,
-        ),
-        CustomText(
-          text: "Remember Me",
-          fontSize: 14.s,
-          color: AppColors.myNavy,
-          fontWeight: FontWeight.w600,
-        ),
-        Spacer(),
-        CustomText(
-          text: "Forgot Password?",
-          fontSize: 14.s,
-          color: AppColors.light_blue,
-          fontWeight: FontWeight.w600,
-        ),
-      ],
     );
   }
 }

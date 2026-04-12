@@ -8,7 +8,7 @@ abstract class ApiConsumer {
   });
 
   // post request
-  Future<void> post(
+  Future<Map<String, dynamic>> post(
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
