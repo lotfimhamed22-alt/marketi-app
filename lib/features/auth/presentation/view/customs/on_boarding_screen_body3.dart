@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/api/dio_consumer.dart';
+import 'package:marketi/core/network/api/dio_consumer.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/customs/custom_button.dart';

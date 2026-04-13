@@ -12,4 +12,6 @@ class AppColors {
   static final myNavy = Color(0xff51526C);
   static final light_blue = Color(0xff3F80FF);
   static final myRed = Color(0xFFbc0e02);
+  static final myBlack = Color(0xFF000000);
+  static final backgroundProductColor = Color(0xffD9E6FF);
 }

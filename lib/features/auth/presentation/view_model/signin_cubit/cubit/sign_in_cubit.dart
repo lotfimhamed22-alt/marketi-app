@@ -1,9 +1,9 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_print
 
 import 'package:bloc/bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:marketi/core/api/api_consumer.dart';
-import 'package:marketi/core/errors/exceptions.dart';
+import 'package:marketi/core/network/api/api_consumer.dart';
+import 'package:marketi/core/network/errors/exceptions.dart';
 import 'package:marketi/features/auth/data/models/sign_in_model.dart';
 import 'package:meta/meta.dart';
 

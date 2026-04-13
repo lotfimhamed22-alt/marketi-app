@@ -13,6 +13,8 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText,
     this.validator,
     this.hintText,
+    this.suffixColor,
+    required this.readOnly,
   });
   final String? lableText;
   final String? hintText;
@@ -22,9 +24,12 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final bool? obscureText;
   final String? Function(String?)? validator;
+  final Color? suffixColor;
+  final bool readOnly;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly,
       controller: controller,
       obscureText: obscureText ?? false,
       validator: validator,
@@ -36,9 +41,10 @@ class CustomTextFormField extends StatelessWidget {
           fontSize: 16.s,
           fontWeight: FontWeight.w500,
         ),
+        suffixStyle: TextStyle(color: suffixColor),
         suffixIcon: GestureDetector(
           onTap: onTap,
-          child: Icon(suffixIcon, color: AppColors.labeTextColor),
+          child: Icon(suffixIcon, color: suffixColor),
         ),
         prefixIcon: Icon(prefixIcon, color: AppColors.ContainerColorPrimary),
         enabledBorder: OutlineInputBorder(

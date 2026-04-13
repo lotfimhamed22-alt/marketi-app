@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:marketi/core/errors/error_model.dart';
+import 'package:marketi/core/network/errors/error_model.dart';
 
 class ServerException implements Exception {
   final ErrorModel errorModel;

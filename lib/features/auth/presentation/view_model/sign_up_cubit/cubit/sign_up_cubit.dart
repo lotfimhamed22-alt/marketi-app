@@ -2,12 +2,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
-import 'package:marketi/core/api/end_points.dart';
-import 'package:marketi/core/errors/exceptions.dart';
+import 'package:marketi/core/network/errors/exceptions.dart';
 import 'package:marketi/features/auth/data/models/sign_up_model.dart';
 import 'package:meta/meta.dart';
 
-import 'package:marketi/core/api/api_consumer.dart';
+import 'package:marketi/core/network/api/api_consumer.dart';
 
 part 'sign_up_state.dart';
 

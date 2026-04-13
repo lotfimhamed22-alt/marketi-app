@@ -7,7 +7,6 @@ import 'package:marketi/core/customs/custom_image_on_boarding.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
-import 'package:marketi/features/auth/presentation/view/screens/congratulations.dart';
 import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -60,6 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
+                        readOnly: false,
                         hintText: 'Full Name',
                         prefixIcon: Icons.person_outline,
                         controller: _fullNameController,
@@ -88,6 +88,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
+                        readOnly: false,
+
                         hintText: 'Username',
                         prefixIcon: Icons.person_outline,
                         controller: _userNameController,
@@ -116,6 +118,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
+                        readOnly: false,
+
                         hintText: '+20 1501142409 ',
                         prefixIcon: Icons.phone_android_outlined,
                         controller: _phoneNumberController,
@@ -149,6 +153,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
+                        readOnly: false,
+
                         hintText: 'You@gmail.com',
                         prefixIcon: Icons.email_outlined,
                         controller: _emailController,
@@ -178,21 +184,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         text: "Password",
                         fontSize: 16.5.s,
                         fontWeight: FontWeight.w600,
-
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
+                        readOnly: false,
+
                         hintText: 'Password',
                         obscureText: !isSeen,
                         onTap: () {
                           isSeen = !isSeen;
                           setState(() {});
                         },
-
                         suffixIcon: isSeen
                             ? Icons.visibility_outlined
                             : Icons.visibility_off_outlined,
                         prefixIcon: Icons.lock_outline,
+                        suffixColor: AppColors.labeTextColor,
                         controller: _passwordController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -223,8 +230,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
+                        readOnly: false,
+
                         hintText: 'Confirm Password',
                         obscureText: !isSeenConfirm,
+                        suffixColor: AppColors.labeTextColor,
+
                         onTap: () {
                           isSeenConfirm = !isSeenConfirm;
                           setState(() {});

@@ -4,12 +4,12 @@ class CustomImageOnBoarding extends StatelessWidget {
   const CustomImageOnBoarding({
     super.key,
     required this.image,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
   });
   final String image;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {

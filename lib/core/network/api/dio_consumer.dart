@@ -1,8 +1,8 @@
-import 'package:marketi/core/api/api_consumer.dart';
+import 'package:marketi/core/network/api/api_consumer.dart';
 import 'package:dio/dio.dart';
-import 'package:marketi/core/api/api_interceptors.dart';
-import 'package:marketi/core/api/end_points.dart';
-import 'package:marketi/core/errors/exceptions.dart';
+import 'package:marketi/core/network/api/api_interceptors.dart';
+import 'package:marketi/core/network/api/end_points.dart';
+import 'package:marketi/core/network/errors/exceptions.dart';
 
 class DioConsumer extends ApiConsumer {
   DioConsumer({required this.dio}) {
@@ -41,7 +41,7 @@ class DioConsumer extends ApiConsumer {
   }
 
   @override
-  Future<void> get(
+  Future<Map<String, dynamic>> get(
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
@@ -55,6 +55,7 @@ class DioConsumer extends ApiConsumer {
       return response.data;
     } on DioException catch (e) {
       handleDioException(e);
+      return {};
     }
   }
 

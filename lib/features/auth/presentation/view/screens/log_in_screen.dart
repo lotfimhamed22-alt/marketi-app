@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/api/dio_consumer.dart';
+import 'package:marketi/core/network/api/dio_consumer.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_row_text.dart';
@@ -13,7 +13,8 @@ import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/customs/custom_image_on_boarding.dart';
-import 'package:marketi/features/Home/presentation/view/home_page.dart';
+import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
+import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
 import 'package:marketi/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
 import 'package:marketi/features/auth/presentation/view_model/signin_cubit/cubit/sign_in_cubit.dart';
@@ -52,14 +53,15 @@ class _LogInScreenState extends State<LogInScreen> {
                   height: 282.h,
                 ),
                 CustomTextFormField(
+                  readOnly: false,
                   lableText: 'Username or Email',
                   prefixIcon: Icons.email_outlined,
                   controller: _emailController,
+                  suffixColor: AppColors.labeTextColor,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Email is required";
                     }
-
                     final emailRegex = RegExp(
                       r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
                     );
@@ -72,6 +74,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
                 Gap(16.h),
                 CustomTextFormField(
+                  readOnly: false,
                   lableText: 'Password',
                   prefixIcon: Icons.lock_outlined,
                   controller: _passwordController,
