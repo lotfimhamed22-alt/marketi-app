@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_import
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/customs/custom_image_on_boarding.dart';
 import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
-import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
 import 'package:marketi/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
 import 'package:marketi/features/auth/presentation/view_model/signin_cubit/cubit/sign_in_cubit.dart';

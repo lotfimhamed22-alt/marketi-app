@@ -3,16 +3,69 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
+import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
 
-class CustomPopularProduct extends StatefulWidget {
-  const CustomPopularProduct({super.key});
+class PopularProduct extends StatelessWidget {
+  const PopularProduct({super.key});
+
   @override
-  State<CustomPopularProduct> createState() => _CustomPopularProductState();
+  Widget build(BuildContext context) {
+    return Scaffold(body: PopularProductBody());
+  }
 }
 
-class _CustomPopularProductState extends State<CustomPopularProduct> {
+class PopularProductBody extends StatefulWidget {
+  const PopularProductBody({super.key});
+
+  @override
+  State<PopularProductBody> createState() => _PopularProductBodyState();
+}
+
+class _PopularProductBodyState extends State<PopularProductBody> {
+  final TextEditingController _searchController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Column(
+        children: [
+          Gap(70.h),
+          CustomRowHomePage(text: "Popular Product"),
+          Gap(20.h),
+          // search
+          CustomTextFormField(
+            readOnly: true,
+            prefixIcon: Icons.search,
+            controller: _searchController,
+            hintText: "What are you looking for ? ",
+            suffixIcon: Icons.tune_outlined,
+            suffixColor: AppColors.myBlue,
+          ),
+          // products
+          Container(height: 20.h, color: AppColors.myWhite),
+          BlocProvider(
+            create: (context) => AllProductCubit(),
+            child: CustomGridViewProductsPage(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomGridViewProductsPage extends StatefulWidget {
+  const CustomGridViewProductsPage({super.key});
+
+  @override
+  State<CustomGridViewProductsPage> createState() =>
+      _CustomGridViewProductsPageState();
+}
+
+class _CustomGridViewProductsPageState
+    extends State<CustomGridViewProductsPage> {
   Set<int> likedIndexes = {};
   Set<int> evaluatedIndexes = {}; // 1
   @override
@@ -23,20 +76,20 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 187.h,
+    return Expanded(
       child: BlocBuilder<AllProductCubit, AllProductState>(
         builder: (context, state) {
           if (state is AllProductLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           }
           if (state is AllProductSuccess) {
-            final products = state.productResponse.list;
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: products.length,
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemCount: state.productResponse.list.length,
               itemBuilder: (context, index) {
-                final product = products[index];
+                //final product = products[index];
                 final isLiked = likedIndexes.contains(index);
                 final isEvaluated = evaluatedIndexes.contains(index); //2
                 return Padding(
@@ -66,7 +119,8 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                             child: Stack(
                               children: [
                                 Image.network(
-                                  product.thumbnail.toString(),
+                                  state.productResponse.list[index].thumbnail
+                                      .toString(),
                                   width: 190.w,
                                   height: 120.h,
                                   fit: BoxFit.cover,
@@ -109,7 +163,8 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                           Row(
                             children: [
                               CustomText(
-                                text: "${product.price} LE",
+                                text:
+                                    "${state.productResponse.list[index].price} LE",
                                 fontSize: 16.s,
                                 color: AppColors.ContainerColorPrimary,
                                 fontWeight: FontWeight.w600,
@@ -132,7 +187,8 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                 ),
                               ),
                               CustomText(
-                                text: product.rating.toString(),
+                                text: state.productResponse.list[index].rating
+                                    .toString(),
                                 fontSize: 16.s,
                                 color: AppColors.ContainerColorPrimary,
                                 fontWeight: FontWeight.w600,
@@ -140,7 +196,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                             ],
                           ),
                           CustomText(
-                            text: product.title,
+                            text: state.productResponse.list[index].title,
                             fontSize: 16.s,
                             color: AppColors.ContainerColorPrimary,
                             fontWeight: FontWeight.w600,
@@ -153,8 +209,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
               },
             );
           }
-
-          return const Center(child: Text("Failed to load products"));
+          return Container();
         },
       ),
     );

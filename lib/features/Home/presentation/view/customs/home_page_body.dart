@@ -8,6 +8,7 @@ import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_popular_product.dart';
+import 'package:marketi/features/Home/presentation/view/screen/popular_product.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -71,27 +72,25 @@ class _HomePageBodyState extends State<HomePageBody> {
                 color: AppColors.myBlack,
                 fontWeight: FontWeight.bold,
               ),
-              CustomText(
-                text: "View all",
-                fontSize: 16.s,
-                color: AppColors.myBlue,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => PopularProduct()),
+                  );
+                },
+                child: CustomText(
+                  text: "View all",
+                  fontSize: 16.s,
+                  color: AppColors.myBlue,
+                ),
               ),
             ],
           ),
           // all products
           Gap(10.h),
           // popular product
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                ...List.generate(4, (index) {
-                  return CustomPopularProduct();
-                }),
-              ],
-            ),
-          ),
-          //
+          CustomPopularProduct(),
         ],
       ),
     );
