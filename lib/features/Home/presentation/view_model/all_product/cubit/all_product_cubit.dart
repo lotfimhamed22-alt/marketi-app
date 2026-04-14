@@ -1,8 +1,7 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_print
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:marketi/core/network/errors/exceptions.dart';
 import 'package:marketi/features/Home/data/models/all_product_model.dart';
 import 'package:meta/meta.dart';
 

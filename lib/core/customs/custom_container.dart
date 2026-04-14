@@ -7,12 +7,16 @@ class CustomContainer extends StatelessWidget {
     required this.width,
     required this.height,
     required this.borderRadius,
-    required this.color,
+    this.color,
+    this.child,
+    this.border,
   });
   final double width;
   final double height;
   final double borderRadius;
-  final Color color;
+  final Color? color;
+  final Widget? child;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,9 @@ class CustomContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(borderRadius.r),
+        border: border,
       ),
+      child: child,
     );
   }
 }

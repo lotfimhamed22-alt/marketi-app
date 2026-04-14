@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:marketi/core/constants/app_colors.dart';
@@ -7,8 +8,12 @@ import 'package:marketi/core/customs/custom_image_on_boarding.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/features/Home/presentation/view/customs/custom_category_grid_view.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_popular_product.dart';
+import 'package:marketi/features/Home/presentation/view/customs/custom_row_name_offer.dart';
+import 'package:marketi/features/Home/presentation/view/screen/category_screen.dart';
 import 'package:marketi/features/Home/presentation/view/screen/popular_product.dart';
+import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({super.key});
@@ -63,34 +68,35 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
           Gap(15.h),
           // popular products
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomText(
-                text: "Popular Product",
-                fontSize: 20.s,
-                color: AppColors.myBlack,
-                fontWeight: FontWeight.bold,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => PopularProduct()),
-                  );
-                },
-                child: CustomText(
-                  text: "View all",
-                  fontSize: 16.s,
-                  color: AppColors.myBlue,
-                ),
-              ),
-            ],
+          CustomRowNameOffer(
+            text: "Popular Product",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => PopularProduct()),
+              );
+            },
           ),
           // all products
           Gap(10.h),
           // popular product
           CustomPopularProduct(),
+          Gap(10.h),
+          CustomRowNameOffer(
+            text: "Category",
+            onTap: () {
+              Navigator.push(
+                context,
+                (MaterialPageRoute(builder: (_) => CategoryScreen())),
+              );
+            },
+          ),
+          Gap(10.h),
+          // category custom
+          BlocProvider(
+            create: (context) => CategoryCubit(),
+            child: CustomCategoryGridView(),
+          ),
         ],
       ),
     );

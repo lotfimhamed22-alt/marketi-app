@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/customs/circle_avatar_custom.dart';
@@ -22,9 +21,14 @@ class CustomRowHomePage extends StatelessWidget {
             border: Border.all(color: AppColors.myBorderColor, width: 1),
             // color: AppColors.myBorderColor,
           ),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            color: AppColors.ContainerColorPrimary,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back_ios_new,
+              color: AppColors.ContainerColorPrimary,
+            ),
           ),
         ),
         CustomText(
