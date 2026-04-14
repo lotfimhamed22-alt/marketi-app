@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_grid_view_home_page.dart';
@@ -32,7 +33,7 @@ class _PopularProductBodyState extends State<PopularProductBody> {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Column(
         children: [
-          Gap(70.h),
+          Gap(50.h),
           CustomRowHomePage(text: "Popular Product"),
           Gap(20.h),
           // search
@@ -44,8 +45,19 @@ class _PopularProductBodyState extends State<PopularProductBody> {
             suffixIcon: Icons.tune_outlined,
             suffixColor: AppColors.myBlue,
           ),
+          Gap(10.h),
+          //
           // products
-          Container(height: 20.h, color: AppColors.myWhite),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CustomText(
+                text: "All Products",
+                fontSize: 22.s,
+                fontWeight: FontWeight.w600,
+              ),
+            ],
+          ),
           BlocProvider(
             create: (context) => AllProductCubit(),
             child: CustomGridViewProductsPage(),

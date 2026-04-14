@@ -5,18 +5,18 @@ import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
-import 'package:marketi/features/Home/presentation/view/customs/custom_category_grid_view.dart';
+import 'package:marketi/features/Home/presentation/view/customs/custom_brand_grid_view.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
-import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
+import 'package:marketi/features/Home/presentation/view_model/brands/cubit/cubit/brands_cubit.dart';
 
-class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({super.key});
+class CustomBrandBody extends StatefulWidget {
+  const CustomBrandBody({super.key});
 
   @override
-  State<CategoryScreen> createState() => _CategoryScreenState();
+  State<CustomBrandBody> createState() => _CustomBrandBodyState();
 }
 
-class _CategoryScreenState extends State<CategoryScreen> {
+class _CustomBrandBodyState extends State<CustomBrandBody> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -26,8 +26,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
           children: [
-            Gap(50.h),
-            CustomRowHomePage(text: "Categories"),
+            Gap(70.h),
+            CustomRowHomePage(text: "Brands"),
             Gap(20.h),
             // search
             CustomTextFormField(
@@ -38,26 +38,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
               suffixIcon: Icons.tune_outlined,
               suffixColor: AppColors.myBlue,
             ),
+            Gap(10.h),
             //
-            Gap(20.h),
+            // brand
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CustomText(
-                  text: "All Categories",
+                  text: "All Brands",
                   fontSize: 22.s,
                   fontWeight: FontWeight.w600,
                 ),
               ],
             ),
-            //Gap(5.h),
+            Gap(10.h),
             BlocProvider(
-              create: (context) => CategoryCubit(),
-              child: CustomCategoryGridView(
-                crossAxisCount: 2,
-                height: 750.h,
-                childAspectRatio: 1.3,
-              ),
+              create: (context) => BrandsCubit(),
+              child: CustomBrandGridView(),
             ),
           ],
         ),

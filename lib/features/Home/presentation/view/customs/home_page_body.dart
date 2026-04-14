@@ -8,11 +8,14 @@ import 'package:marketi/core/customs/custom_image_on_boarding.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/features/Home/presentation/view/customs/custom_brand_list_view.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_category_grid_view.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_popular_product.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_name_offer.dart';
+import 'package:marketi/features/Home/presentation/view/screen/brand_screen.dart';
 import 'package:marketi/features/Home/presentation/view/screen/category_screen.dart';
 import 'package:marketi/features/Home/presentation/view/screen/popular_product.dart';
+import 'package:marketi/features/Home/presentation/view_model/brands/cubit/cubit/brands_cubit.dart';
 import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
 
 class HomePageBody extends StatefulWidget {
@@ -28,9 +31,9 @@ class _HomePageBodyState extends State<HomePageBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: ListView(
+      child: Column(
         children: [
-          Gap(20.h),
+          Gap(50.h),
           // appbar
           Row(
             children: [
@@ -59,43 +62,68 @@ class _HomePageBodyState extends State<HomePageBody> {
             suffixIcon: Icons.tune_outlined,
             suffixColor: AppColors.myBlue,
           ),
-          Gap(15.h),
-          // offer_1
-          CustomImageOnBoarding(
-            image: "assets/logo/Offer_1.png",
-            // width: 347.w,
-            // height: 150.h,
-          ),
-          Gap(15.h),
-          // popular products
-          CustomRowNameOffer(
-            text: "Popular Product",
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => PopularProduct()),
-              );
-            },
-          ),
-          // all products
-          Gap(10.h),
-          // popular product
-          CustomPopularProduct(),
-          Gap(10.h),
-          CustomRowNameOffer(
-            text: "Category",
-            onTap: () {
-              Navigator.push(
-                context,
-                (MaterialPageRoute(builder: (_) => CategoryScreen())),
-              );
-            },
-          ),
-          Gap(10.h),
-          // category custom
-          BlocProvider(
-            create: (context) => CategoryCubit(),
-            child: CustomCategoryGridView(),
+          Gap(5.h),
+          SizedBox(
+            height: 705.h,
+            child: ListView(
+              children: [
+                // offer_1
+                CustomImageOnBoarding(image: "assets/logo/Offer_1.png"),
+                Gap(15.h),
+                // popular products
+                CustomRowNameOffer(
+                  text: "Popular Product",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => PopularProduct()),
+                    );
+                  },
+                ),
+                // all products
+                Gap(10.h),
+                // popular product
+                CustomPopularProduct(),
+                Gap(10.h),
+                // category
+                CustomRowNameOffer(
+                  text: "Category",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      (MaterialPageRoute(builder: (_) => CategoryScreen())),
+                    );
+                  },
+                ),
+                Gap(10.h),
+                // category custom
+                BlocProvider(
+                  create: (context) => CategoryCubit(),
+                  child: CustomCategoryGridView(
+                    crossAxisCount: 3,
+                    height: 305.h,
+                    childAspectRatio: .99,
+                  ),
+                ),
+                Gap(10.h),
+                // brand
+                CustomRowNameOffer(
+                  text: "Brands",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => BrandScreen()),
+                    );
+                  },
+                ),
+                Gap(10.h),
+                // category custom
+                BlocProvider(
+                  create: (context) => BrandsCubit(),
+                  child: CustomBrandListView(scrollDirection: Axis.horizontal),
+                ),
+              ],
+            ),
           ),
         ],
       ),

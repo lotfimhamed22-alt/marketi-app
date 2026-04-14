@@ -10,6 +10,7 @@ class CustomContainer extends StatelessWidget {
     this.color,
     this.child,
     this.border,
+    this.alignment,
   });
   final double width;
   final double height;
@@ -17,12 +18,14 @@ class CustomContainer extends StatelessWidget {
   final Color? color;
   final Widget? child;
   final BoxBorder? border;
+  final AlignmentGeometry? alignment;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width.w,
       height: height.h,
+      alignment: alignment,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(borderRadius.r),

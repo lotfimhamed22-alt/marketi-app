@@ -5,8 +5,8 @@ import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomRowHomePage extends StatelessWidget {
-  const CustomRowHomePage({super.key, required this.text});
-  final String text;
+  const CustomRowHomePage({super.key, this.text});
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class CustomRowHomePage extends StatelessWidget {
           ),
         ),
         CustomText(
-          text: text,
+          text: text ?? "",
           fontSize: 22.s,
           color: AppColors.ContainerColorPrimary,
           fontWeight: FontWeight.bold,

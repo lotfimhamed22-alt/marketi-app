@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/features/Home/presentation/view/screen/search_screen.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -31,6 +32,12 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       readOnly: readOnly,
       controller: controller,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => SearchScreen()),
+        );
+      },
       obscureText: obscureText ?? false,
       validator: validator,
       decoration: InputDecoration(
