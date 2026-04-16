@@ -8,6 +8,7 @@ import 'package:marketi/features/forget_password/presentation/view/customs/custo
 import 'package:marketi/features/forget_password/presentation/view/customs/custom_textfield_email.dart';
 import 'package:marketi/features/forget_password/presentation/view/customs/send_code_button.dart';
 import 'package:marketi/features/forget_password/presentation/view/screens/verification_code_by_email.dart';
+import 'package:marketi/features/forget_password/presentation/view_model/reset_code/cubit/password_code_cubit.dart';
 import 'package:marketi/features/forget_password/presentation/view_model/reset_password/cubit/reset_password_cubit.dart';
 
 class ForgetPasswordByEmailScreen extends StatefulWidget {
@@ -62,8 +63,11 @@ class _ForgetPasswordByEmailScreenState
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => VerificationCodeByEmail(
-                            email: _emailController.text,
+                          builder: (_) => BlocProvider(
+                            create: (context) => PasswordCodeCubit(),
+                            child: VerificationCodeByEmail(
+                              email: _emailController.text,
+                            ),
                           ),
                         ),
                       );

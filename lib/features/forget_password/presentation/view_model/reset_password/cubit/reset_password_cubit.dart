@@ -2,7 +2,6 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:marketi/features/forget_password/data/models/reset_password_model.dart';
 import 'package:meta/meta.dart';
 
 part 'reset_password_state.dart';
