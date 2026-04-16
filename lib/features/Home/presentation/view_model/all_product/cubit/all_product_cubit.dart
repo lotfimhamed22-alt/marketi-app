@@ -22,7 +22,7 @@ class AllProductCubit extends Cubit<AllProductState> {
         options: Options(
           headers: {
             "Authorization":
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZGNhMmE2YWZmZDZiNjE3Y2EwNzA5NSIsImlhdCI6MTc3NjA2NzI5MiwiZXhwIjoxNzc4NjU5MjkyfQ.Ug7fnPqyAj5g1PpJqHIlKyJfhMIvlJLWs8_s5Ny5Q4M",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZTBkMmRiYzM2MzQ2MDBjNzQ0OGZjNyIsImlhdCI6MTc3NjM0Mzc0NiwiZXhwIjoxNzc4OTM1NzQ2fQ.BMBcQ3W8adS9Q3jY9LCd0Dsj6FI8pfR3MIT8HO3z0lc",
           },
         ),
       );

@@ -4,15 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:marketi/bottom_navigation_bar.dart';
 import 'package:marketi/core/network/api/dio_consumer.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
-import 'package:marketi/core/customs/custom_row_text.dart';
+import 'package:marketi/features/auth/presentation/view/customs/custom_row_text.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/customs/custom_image_on_boarding.dart';
-import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
 import 'package:marketi/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
 import 'package:marketi/features/auth/presentation/view_model/signin_cubit/cubit/sign_in_cubit.dart';
@@ -111,7 +111,9 @@ class _LogInScreenState extends State<LogInScreen> {
                       );
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (_) => HomePage()),
+                        MaterialPageRoute(
+                          builder: (_) => BottomNavigationBarR(),
+                        ),
                       );
                     }
                     if (state is SignInFailure) {
