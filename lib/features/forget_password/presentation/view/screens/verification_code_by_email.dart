@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -8,6 +10,7 @@ import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/forget_password/presentation/view/customs/custom_app_bar_forget_password_screen.dart';
 import 'package:marketi/features/forget_password/presentation/view/screens/new_password.dart';
+import 'package:marketi/features/forget_password/presentation/view_model/create_password/cubit/create_password_cubit.dart';
 import 'package:marketi/features/forget_password/presentation/view_model/reset_code/cubit/password_code_cubit.dart';
 
 class VerificationCodeByEmail extends StatefulWidget {
@@ -77,7 +80,12 @@ class _VerificationCodeByEmailState extends State<VerificationCodeByEmail> {
                   );
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => NewPassword()),
+                    MaterialPageRoute(
+                      builder: (_) => BlocProvider(
+                        create: (context) => CreatePasswordCubit(),
+                        child: NewPassword(email: widget.email),
+                      ),
+                    ),
                   );
                 }
                 if (state is PasswordCodeFailure) {

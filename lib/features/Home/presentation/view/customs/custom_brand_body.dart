@@ -27,7 +27,7 @@ class _CustomBrandBodyState extends State<CustomBrandBody> {
         child: Column(
           children: [
             Gap(70.h),
-            CustomRowHomePage(text: "Brands"),
+            CustomRowHomePage(text: "Brands", isSeen: true),
             Gap(20.h),
             // search
             CustomTextFormField(

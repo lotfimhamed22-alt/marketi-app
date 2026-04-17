@@ -34,7 +34,7 @@ class _PopularProductBodyState extends State<PopularProductBody> {
       child: Column(
         children: [
           Gap(50.h),
-          CustomRowHomePage(text: "Popular Product"),
+          CustomRowHomePage(text: "Popular Product", isSeen: true),
           Gap(20.h),
           // search
           CustomTextFormField(

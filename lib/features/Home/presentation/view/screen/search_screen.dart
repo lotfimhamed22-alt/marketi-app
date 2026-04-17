@@ -18,7 +18,7 @@ class SearchBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: Column(children: [Gap(50.h), CustomRowHomePage()]),
+      child: Column(children: [Gap(50.h), CustomRowHomePage(isSeen: true)]),
     );
   }
 }

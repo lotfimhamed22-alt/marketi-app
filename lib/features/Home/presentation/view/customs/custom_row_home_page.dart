@@ -8,8 +8,9 @@ import 'package:marketi/features/profile/presentation/view/profile_page.dart';
 import 'package:marketi/features/profile/presentation/view_model/cubit/cubit/profile_cubit.dart';
 
 class CustomRowHomePage extends StatelessWidget {
-  const CustomRowHomePage({super.key, this.text});
+  const CustomRowHomePage({super.key, this.text, required this.isSeen});
   final String? text;
+  final bool isSeen;
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +53,13 @@ class CustomRowHomePage extends StatelessWidget {
               ),
             );
           },
-          child: CircleAvatarCustom(
-            h: 50.h,
-            w: 50.w,
-            imagePath: 'assets/images/Dod.png',
-          ),
+          child: isSeen
+              ? CircleAvatarCustom(
+                  h: 50.h,
+                  w: 50.w,
+                  imagePath: 'assets/images/Dod.png',
+                )
+              : null,
         ),
       ],
     );

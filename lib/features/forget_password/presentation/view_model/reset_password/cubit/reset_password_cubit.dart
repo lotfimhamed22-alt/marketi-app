@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, avoid_print
+// ignore_for_file: depend_on_referenced_packages, avoid_print, unused_local_variable
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';

@@ -27,7 +27,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         child: Column(
           children: [
             Gap(50.h),
-            CustomRowHomePage(text: "Categories"),
+            CustomRowHomePage(text: "Categories", isSeen: true),
             Gap(20.h),
             // search
             CustomTextFormField(
