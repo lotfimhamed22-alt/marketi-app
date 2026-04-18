@@ -32,16 +32,16 @@ class CongratulationsBody extends StatelessWidget {
           Gap(80.h),
           CustomImageOnBoarding(
             image: "assets/images/congrates/Congratulations.png",
-            width: 443.52.w,
-            height: 256.h,
+            width: 543.52.w,
+            //height: 256.h,
           ),
-          Gap(16.h),
+          Gap(30.h),
           CustomText(
             text: "Congratulations",
             fontSize: 24.s,
             fontWeight: FontWeight.bold,
           ),
-          Gap(16.h),
+          Gap(20.h),
           CustomText(
             text:
                 "You have updated the password. please\n login again with your latest password",
@@ -49,6 +49,7 @@ class CongratulationsBody extends StatelessWidget {
             fontWeight: FontWeight.w400,
             color: AppColors.myNavy,
           ),
+          Gap(20.h),
           CustomButton(
             text: "Log in",
             fontSize: 18,

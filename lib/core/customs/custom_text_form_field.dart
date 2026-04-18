@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/features/search/presentation/view/screen/search_screen.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -15,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.suffixColor,
     required this.readOnly,
+    this.onChanged,
   });
   final String? lableText;
   final String? hintText;
@@ -26,9 +30,20 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Color? suffixColor;
   final bool readOnly;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
+      onTap: () {
+        if (readOnly == true) {
+          print("search");
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => SearchScreen()),
+          );
+        } else {}
+      },
       readOnly: readOnly,
       controller: controller,
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/bottom_navigation_bar.dart';
 import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
 import 'package:marketi/features/start-up/splash/screen/splash_screen.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.myWhite,
         fontFamily: "poppins",
       ),
-      home: SplashScreen(),
+      home: BottomNavigationBarR(),
       debugShowCheckedModeBanner: false,
     );
   }

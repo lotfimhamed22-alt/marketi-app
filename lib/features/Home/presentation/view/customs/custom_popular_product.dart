@@ -18,7 +18,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
   @override
   void initState() {
     super.initState();
-    context.read<AllProductCubit>().getAllProducts();
+    context.read<AllProductCubit>().getAllProducts(3);
   }
 
   @override
@@ -66,7 +66,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                             child: Stack(
                               children: [
                                 Image.network(
-                                  product.thumbnail.toString(),
+                                  product.thumbnail,
                                   width: 190.w,
                                   height: 120.h,
                                   fit: BoxFit.cover,

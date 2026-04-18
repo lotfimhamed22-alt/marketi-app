@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
 
 class BottomNavigationBarR extends StatefulWidget {
@@ -26,8 +27,9 @@ class _BottomNavigationBarRState extends State<BottomNavigationBarR> {
           selectIndex = value;
           setState(() {});
         },
+        // fixedColor: ,
         currentIndex: selectIndex,
-        backgroundColor: Color(0xff242A32),
+        backgroundColor: AppColors.myWhite,
         selectedItemColor: Color(0xff0296E5),
         unselectedItemColor: Color(0xff67686D),
         showUnselectedLabels: true,

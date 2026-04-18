@@ -14,4 +14,5 @@ class AppColors {
   static final myRed = Color(0xFFbc0e02);
   static final myBlack = Color(0xFF000000);
   static final backgroundProductColor = Color(0xffD9E6FF);
+  static final paginationColor = Color(0xff659AFF);
 }

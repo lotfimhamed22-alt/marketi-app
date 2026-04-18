@@ -59,7 +59,7 @@ class CustomRowHomePage extends StatelessWidget {
                   w: 50.w,
                   imagePath: 'assets/images/Dod.png',
                 )
-              : null,
+              : Container(),
         ),
       ],
     );

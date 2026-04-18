@@ -10,14 +10,14 @@ part 'all_product_state.dart';
 class AllProductCubit extends Cubit<AllProductState> {
   AllProductCubit() : super(AllProductInitial());
 
-  Future<void> getAllProducts() async {
+  Future<void> getAllProducts(int limit) async {
     emit(AllProductLoading());
     print("loading");
     try {
       var dio = Dio();
       // fetching products
       var response = await dio.get(
-        "https://supermarket-dan1.onrender.com/api/v1/home/products?skip=1&limit=10",
+        "https://supermarket-dan1.onrender.com/api/v1/home/products?skip=1&limit=$limit",
         // queryParameters: {"skip": 1, "limit": 10},
         options: Options(
           headers: {
