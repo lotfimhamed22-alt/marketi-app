@@ -23,6 +23,9 @@ class CategoryCubit extends Cubit<CategoryState> {
       );
       print("success");
       var category = CategoryResponse.fromJson(response.data);
+      if (isClosed) {
+        return;
+      }
       emit(CategorySuccess(categoryResponse: category));
     } on DioException catch (e) {
       print("failure");

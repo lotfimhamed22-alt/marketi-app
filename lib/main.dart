@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/bottom_navigation_bar.dart';
 import 'package:marketi/core/constants/app_colors.dart';
-import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
-import 'package:marketi/features/start-up/splash/screen/splash_screen.dart';
+import 'package:marketi/features/cart/presentation/view/screens/cart_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.myWhite,
         fontFamily: "poppins",
       ),
-      home: BottomNavigationBarR(),
+      home: Cartscreen(),
       debugShowCheckedModeBanner: false,
     );
   }

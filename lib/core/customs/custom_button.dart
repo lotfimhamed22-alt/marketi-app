@@ -9,14 +9,14 @@ class CustomButton extends StatelessWidget {
     required this.fontWeight,
     this.onPressed,
     required this.colorText,
-    required this.colorBackGroundButton,
+    this.colorBackGroundButton,
   });
   final String text;
   final double fontSize;
   final Color colorText;
   final FontWeight fontWeight;
   final void Function()? onPressed;
-  final Color colorBackGroundButton;
+  final Color? colorBackGroundButton;
 
   @override
   Widget build(BuildContext context) {

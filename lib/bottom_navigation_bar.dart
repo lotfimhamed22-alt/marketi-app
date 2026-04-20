@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/core/constants/app_colors.dart';
 import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
+import 'package:marketi/features/cart/presentation/view/screens/cart_screen.dart';
 
 class BottomNavigationBarR extends StatefulWidget {
   const BottomNavigationBarR({super.key});
@@ -14,7 +15,7 @@ class _BottomNavigationBarRState extends State<BottomNavigationBarR> {
 
   final List<Widget> products = [
     HomePage(),
-    Container(color: Colors.red),
+    Cartscreen(),
     Container(color: Colors.blue),
     Container(color: Colors.pink),
   ];

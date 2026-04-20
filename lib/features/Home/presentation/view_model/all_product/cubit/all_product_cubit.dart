@@ -28,6 +28,9 @@ class AllProductCubit extends Cubit<AllProductState> {
       );
       print("success");
       var product = ProductResponse.fromJson(response.data);
+      if (isClosed) {
+        return;
+      }
       // After fetching products successfully, emit the success state
       emit(AllProductSuccess(productResponse: product));
     } on DioException catch (e) {

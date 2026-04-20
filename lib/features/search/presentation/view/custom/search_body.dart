@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings
-
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -10,6 +9,8 @@ import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
 import 'package:marketi/features/search/presentation/view/custom/category_search.dart';
+import 'package:marketi/features/search/presentation/view/custom/custom_notfound_search.dart';
+import 'package:marketi/features/search/presentation/view/custom/custom_products.dart';
 import 'package:marketi/features/search/presentation/view_model/cubit/search_cubit.dart';
 
 class SearchBody extends StatefulWidget {
@@ -21,7 +22,6 @@ class SearchBody extends StatefulWidget {
 
 class _SearchBodyState extends State<SearchBody> {
   bool isShown = false;
-
   final TextEditingController _searchController = TextEditingController();
   Set<int> likedIndexes = {};
   Set<int> evaluatedIndexes = {};
@@ -33,7 +33,7 @@ class _SearchBodyState extends State<SearchBody> {
       child: Column(
         children: [
           Gap(50.h),
-          CustomRowHomePage(isSeen: true),
+          CustomRowHomePage(isSeen: false),
           Gap(20.h),
           CustomTextFormField(
             readOnly: false,
@@ -73,7 +73,7 @@ class _SearchBodyState extends State<SearchBody> {
                   ),
                 ],
               ),
-              //
+
               BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {
                   if (_searchController.text.isEmpty) {
@@ -94,155 +94,11 @@ class _SearchBodyState extends State<SearchBody> {
                           product.brand.toLowerCase().startsWith(query);
                     }).toList();
                     if (filteredList.isEmpty) {
-                      return Center(child: Text("product not found"));
+                      return CustomNotfoundSearch();
                     }
                     return isShown
                         ? Container()
-                        : SizedBox(
-                            height: 730.h,
-
-                            width: 500.w,
-                            child: ListView.builder(
-                              // scrollDirection: Axis.vertical,
-                              itemCount: filteredList.length,
-                              itemBuilder: (context, index) {
-                                // st
-                                // final search = state.search.list[index];
-                                final isLiked = likedIndexes.contains(index);
-                                final isEvaluated = evaluatedIndexes.contains(
-                                  index,
-                                ); //2
-                                return Container(
-                                  // height: 120.h,
-                                  // width: 100.w,
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Image.network(
-                                            filteredList[index].thumbnail,
-                                            width: 150.w,
-                                          ),
-                                          // Gap(10.h),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  CustomText(
-                                                    text: filteredList[index]
-                                                        .category,
-                                                    fontSize: 18.s,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-
-                                                  Gap(160.w),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        if (likedIndexes
-                                                            .contains(index)) {
-                                                          likedIndexes.remove(
-                                                            index,
-                                                          );
-                                                        } else {
-                                                          likedIndexes.add(
-                                                            index,
-                                                          );
-                                                        }
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                      isLiked
-                                                          ? Icons.favorite
-                                                          : Icons
-                                                                .favorite_border,
-                                                      color: isLiked
-                                                          ? Colors.red
-                                                          : AppColors
-                                                                .ContainerColorPrimary,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Gap(5.h),
-                                              CustomText(
-                                                text: filteredList[index].title,
-                                                fontSize: 15.s,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              // Gap(10.h),
-                                              CustomText(
-                                                text: filteredList[index].brand,
-                                                fontSize: 15.s,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              // Gap(10.h),
-                                              Row(
-                                                children: [
-                                                  CustomText(
-                                                    text:
-                                                        "${filteredList[index].price} LE",
-                                                    fontSize: 16.s,
-                                                    color: AppColors
-                                                        .ContainerColorPrimary,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                  Gap(160.w),
-                                                  // Spacer(),
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        isEvaluated
-                                                            ? evaluatedIndexes
-                                                                  .remove(index)
-                                                            : evaluatedIndexes
-                                                                  .add(index);
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                      isEvaluated
-                                                          ? Icons.star
-                                                          : Icons.star_outline,
-                                                      color: isEvaluated
-                                                          ? AppColors.myBlue
-                                                          : AppColors
-                                                                .ContainerColorPrimary,
-                                                      size: 24.s,
-                                                    ),
-                                                  ),
-                                                  CustomText(
-                                                    text: filteredList[index]
-                                                        .rating
-                                                        .toString(),
-                                                    fontSize: 16.s,
-                                                    color: AppColors
-                                                        .ContainerColorPrimary,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Divider(
-                                        height: 30.h,
-                                        color: AppColors.myNavy,
-                                        thickness: 1.s,
-                                        indent: 20,
-                                        endIndent: 20,
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          );
+                        : CustomProducts(filteredList: filteredList);
                   }
                   return Container(child: Text("Retry"));
                 },

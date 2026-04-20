@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_print
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
@@ -15,7 +15,7 @@ class SearchCubit extends Cubit<SearchState> {
     print("load search");
     try {
       var res = await dio.get(
-        "https://supermarket-dan1.onrender.com/api/v1/home/products?skip=0&limit=10&title=$title",
+        "https://supermarket-dan1.onrender.com/api/v1/home/products?skip=0&limit=14&title=$title",
         options: Options(
           headers: {
             "Authorization":

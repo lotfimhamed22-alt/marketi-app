@@ -59,7 +59,39 @@ class CustomRowHomePage extends StatelessWidget {
                   w: 50.w,
                   imagePath: 'assets/images/Dod.png',
                 )
-              : Container(),
+              : Stack(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.shopping_cart_checkout_sharp,
+                        weight: 50.w,
+                      ),
+                    ),
+                    Positioned(
+                      right: 8,
+                      top: 5,
+                      child: Container(
+                        width: 18.w,
+                        height: 18.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.r),
+                          color: AppColors.myBlue,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 13.s,
+                      top: 5.s,
+                      child: CustomText(
+                        text: "5",
+                        fontSize: 15.s,
+                        color: AppColors.myWhite,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
         ),
       ],
     );
