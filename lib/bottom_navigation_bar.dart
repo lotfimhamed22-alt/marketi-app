@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/features/Home/presentation/view/screen/home_page.dart';
 import 'package:marketi/features/cart/presentation/view/screens/cart_screen.dart';
 

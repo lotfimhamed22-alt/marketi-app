@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/search/presentation/view/screen/search_screen.dart';
 

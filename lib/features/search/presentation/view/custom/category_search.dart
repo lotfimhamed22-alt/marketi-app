@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';

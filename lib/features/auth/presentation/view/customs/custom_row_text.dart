@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/forget_password/presentation/view/screens/reset_password_email.dart';

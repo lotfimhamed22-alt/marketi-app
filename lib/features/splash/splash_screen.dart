@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:marketi/core/responsive/extensions.dart';
-import 'package:marketi/features/start-up/onBoarding/screens/onBoarding_screen1.dart';
+import 'package:marketi/features/onboarding/presentation/screen/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => OnboardingScreen1()),
+        MaterialPageRoute(builder: (context) => OnboardingScreen()),
       );
     });
     super.initState();

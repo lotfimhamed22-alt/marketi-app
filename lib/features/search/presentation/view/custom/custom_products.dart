@@ -1,9 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/app_colors.dart';
+import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/features/cart/data/models/product_model_cart.dart';
+import 'package:marketi/features/cart/presentation/view_model/cubit/add_cart/cubit/add_product_cubit.dart';
 import 'package:marketi/features/search/presentation/view/custom/custom_divider.dart';
 
 class CustomProducts extends StatefulWidget {
@@ -127,28 +132,61 @@ class _CustomProductsState extends State<CustomProducts> {
                           ],
                         ),
                         Gap(15.h),
-                        Container(
-                          width: 290.w,
-                          height: 45.h,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.myBlue),
-                            borderRadius: BorderRadius.circular(25.r),
-                          ),
-                          child: CustomButton(
-                            text: isAdded ? "✔️" : "Add",
-                            fontSize: 20.s,
-                            fontWeight: FontWeight.w400,
-                            colorText: AppColors.myBlue,
-                            colorBackGroundButton: isAdded
-                                ? Colors.green
-                                : null,
-                            onPressed: () {
-                              setState(() {
-                                isAdded
-                                    ? isAddedIndex.remove(index)
-                                    : isAddedIndex.add(index);
-                              });
-                            },
+                        BlocProvider(
+                          create: (context) => AddProductCubit(),
+                          child: Container(
+                            width: 290.w,
+                            height: 45.h,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.myBlue),
+                              borderRadius: BorderRadius.circular(25.r),
+                            ),
+                            child:
+                                BlocConsumer<AddProductCubit, AddProductState>(
+                                  listener: (context, state) {
+                                    if (state is AddProductFailure) {
+                                      print("fail save");
+                                    }
+                                    //
+                                    if (state is AddProductSuccess) {
+                                      print("Success save");
+                                    }
+                                  },
+                                  builder: (context, state) {
+                                    return state is AddProductLoading
+                                        ? Center(
+                                            child: CircularProgressIndicator(),
+                                          )
+                                        : CustomButton(
+                                            text: isAdded ? "✔️" : "Add",
+                                            fontSize: 20.s,
+                                            fontWeight: FontWeight.w400,
+                                            colorText: AppColors.myBlue,
+                                            colorBackGroundButton: isAdded
+                                                ? Colors.green
+                                                : null,
+                                            onPressed: () {
+                                              if (isAdded == false) {
+                                                context
+                                                    .read<AddProductCubit>()
+                                                    .addProduct(
+                                                      ProductResponseCart(
+                                                        list: [],
+                                                        total: 0,
+                                                        skip: 0,
+                                                        limit: 10,
+                                                      ),
+                                                    );
+                                              }
+                                              setState(() {
+                                                isAdded
+                                                    ? isAddedIndex.remove(index)
+                                                    : isAddedIndex.add(index);
+                                              });
+                                            },
+                                          );
+                                  },
+                                ),
                           ),
                         ),
                         //
