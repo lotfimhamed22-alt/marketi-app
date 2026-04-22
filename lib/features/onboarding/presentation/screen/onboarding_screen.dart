@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,12 +77,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                       Gap(30.h),
-                      Text(
-                        onboardingList[index].body.toString(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.ContainerColorPrimary,
-                          fontSize: 20.s,
+                      SizedBox(
+                        width: 420.w,
+                        child: Text(
+                          onboardingList[index].body.toString(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.ContainerColorPrimary,
+                            fontSize: 20.s,
+                          ),
                         ),
                       ),
                     ],
@@ -99,7 +105,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => BlocProvider(
+                    builder: (context) => BlocProvider(
                       create: (context) => SignInCubit(DioConsumer(dio: Dio())),
                       child: LogInScreen(),
                     ),

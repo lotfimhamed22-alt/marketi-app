@@ -12,7 +12,7 @@ List<OnboardingModel> onboardingList = [
   OnboardingModel(
     text: "Easy to Buy",
     body:
-        "Find the perfect item that suits your style and \nneeds With secure payment options and fast \ndelivery, shopping has never been easier.",
+        "Find the perfect item that suits your style and needs With secure payment options and fast delivery, shopping has never been easier.",
     imageUrl: ImageAssets.onboardingImageTwo,
   ),
   //

@@ -37,10 +37,15 @@ class _HomePageBodyState extends State<HomePageBody> {
           // appbar
           Row(
             children: [
-              CircleAvatarCustom(
-                h: 50.h,
-                w: 50.w,
-                imagePath: 'assets/images/Dod.png',
+              GestureDetector(
+                // onTap: (){
+                //   Navigator.push(context, route)
+                // },
+                child: CircleAvatarCustom(
+                  h: 50.h,
+                  w: 50.w,
+                  imagePath: 'assets/images/Dod.png',
+                ),
               ),
               Gap(20.h),
               CustomText(
@@ -53,7 +58,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             ],
           ),
           Gap(20.h),
-          // seach
+          // search
           CustomTextFormField(
             readOnly: true,
             prefixIcon: Icons.search,

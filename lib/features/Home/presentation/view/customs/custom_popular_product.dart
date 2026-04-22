@@ -5,6 +5,7 @@ import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomPopularProduct extends StatefulWidget {
   const CustomPopularProduct({super.key});
@@ -13,12 +14,66 @@ class CustomPopularProduct extends StatefulWidget {
 }
 
 class _CustomPopularProductState extends State<CustomPopularProduct> {
-  Set<int> likedIndexes = {};
-  Set<int> evaluatedIndexes = {}; // 1
+  // shared preferences
+
+  // load like
+  _loadLikeStatus() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      likedIndexes =
+          sharedPreferences
+              .getStringList("likedIndex")
+              ?.map((e) => int.parse(e))
+              .toList() ??
+          [];
+    });
+  }
+
+  // toggle like
+  _toggleLike() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      List<String> likedSaved = likedIndexes.map((e) => e.toString()).toList();
+      sharedPreferences.setStringList("likedIndex", likedSaved);
+    });
+  }
+
+  //
+  // evaluation
+  _loadEvaluateStatus() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      evaluatedIndexes =
+          sharedPreferences
+              .getStringList("evaluatedIndexes")
+              ?.map((e) => int.parse(e))
+              .toList() ??
+          [];
+    });
+  }
+
+  // toggle like
+  _toggleEvaluated() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      List<String> evaluateSaved = evaluatedIndexes
+          .map((e) => e.toString())
+          .toList();
+      sharedPreferences.setStringList("evaluatedIndexes", evaluateSaved);
+    });
+  }
+
+  //
+  /////////////////
+  List<int> likedIndexes = [];
+  List<int> evaluatedIndexes = []; // 1
+
   @override
   void initState() {
     super.initState();
     context.read<AllProductCubit>().getAllProducts(3);
+    _loadEvaluateStatus();
+    _loadLikeStatus();
   }
 
   @override
@@ -82,7 +137,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: GestureDetector(
-                                      onTap: () {
+                                      onTap: () async {
                                         setState(() {
                                           if (likedIndexes.contains(index)) {
                                             likedIndexes.remove(index);
@@ -90,6 +145,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                             likedIndexes.add(index);
                                           }
                                         });
+                                        await _toggleLike();
                                       },
                                       child: Icon(
                                         isLiked
@@ -121,6 +177,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                     isEvaluated
                                         ? evaluatedIndexes.remove(index)
                                         : evaluatedIndexes.add(index);
+                                    _toggleEvaluated();
                                   });
                                 },
                                 child: Icon(
