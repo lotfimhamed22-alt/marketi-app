@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:marketi/core/network/api/api_consumer.dart';
 import 'package:marketi/core/network/errors/exceptions.dart';
+import 'package:marketi/core/services/chash_helper.dart';
+import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/auth/data/models/sign_in_model.dart';
 import 'package:meta/meta.dart';
 
@@ -23,7 +25,9 @@ class SignInCubit extends Cubit<SignInState> {
       );
       user = SignInModel.fromJson(response);
       final tokenDecode = JwtDecoder.decode(user!.token);
-      emit(SignInSuccess(user: user!));
+      getIt<ChashHelper>().saveData(key: "token", value: user!.token);
+      getIt<ChashHelper>().saveData(key: "id", value: tokenDecode['id']);
+      emit(SignInSuccess());
       print(response);
       print("tokenid:${tokenDecode['id']}");
     } on ServerException catch (e) {

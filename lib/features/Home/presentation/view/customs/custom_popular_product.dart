@@ -4,76 +4,40 @@ import 'package:gap/gap.dart';
 import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/core/services/chash_helper.dart';
+import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomPopularProduct extends StatefulWidget {
   const CustomPopularProduct({super.key});
+
   @override
   State<CustomPopularProduct> createState() => _CustomPopularProductState();
 }
 
 class _CustomPopularProductState extends State<CustomPopularProduct> {
-  // shared preferences
-
-  // load like
-  _loadLikeStatus() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      likedIndexes =
-          sharedPreferences
-              .getStringList("likedIndex")
-              ?.map((e) => int.parse(e))
-              .toList() ??
-          [];
-    });
-  }
-
-  // toggle like
-  _toggleLike() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      List<String> likedSaved = likedIndexes.map((e) => e.toString()).toList();
-      sharedPreferences.setStringList("likedIndex", likedSaved);
-    });
-  }
-
-  //
-  // evaluation
-  _loadEvaluateStatus() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      evaluatedIndexes =
-          sharedPreferences
-              .getStringList("evaluatedIndexes")
-              ?.map((e) => int.parse(e))
-              .toList() ??
-          [];
-    });
-  }
-
-  // toggle like
-  _toggleEvaluated() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      List<String> evaluateSaved = evaluatedIndexes
-          .map((e) => e.toString())
-          .toList();
-      sharedPreferences.setStringList("evaluatedIndexes", evaluateSaved);
-    });
-  }
-
-  //
-  /////////////////
   List<int> likedIndexes = [];
-  List<int> evaluatedIndexes = []; // 1
+  List<int> evaluatedIndexes = [];
+
+  final cache = getIt<ChashHelper>();
 
   @override
   void initState() {
     super.initState();
+
     context.read<AllProductCubit>().getAllProducts(3);
-    _loadEvaluateStatus();
-    _loadLikeStatus();
+
+    /// ✅ liked
+    final likedData = (cache.getData(key: "likedIndexes")).cast<String>();
+
+    likedIndexes = likedData.map((e) => int.parse(e)).toList();
+
+    /// ✅ evaluated
+    final evaluatedData = (cache.getData(
+      key: "evaluatedIndexes",
+    )).cast<String>();
+
+    evaluatedIndexes = evaluatedData.map((e) => int.parse(e)).toList();
   }
 
   @override
@@ -85,15 +49,20 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
           if (state is AllProductLoading) {
             return const Center(child: CircularProgressIndicator());
           }
+
           if (state is AllProductSuccess) {
             final products = state.productResponse.list;
+
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
-                final isLiked = likedIndexes.contains(index);
-                final isEvaluated = evaluatedIndexes.contains(index); //2
+
+                final isLiked = likedIndexes.contains(product.id);
+
+                final isEvaluated = evaluatedIndexes.contains(product.id);
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6.0),
                   child: Container(
@@ -111,6 +80,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          /// image + like
                           Container(
                             width: 190.w,
                             height: 120.h,
@@ -126,27 +96,34 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                   height: 120.h,
                                   fit: BoxFit.cover,
                                 ),
+
                                 Positioned(
                                   right: 3,
                                   top: 6,
-                                  child: Container(
-                                    width: 35.w,
-                                    height: 35.h,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: GestureDetector(
-                                      onTap: () async {
-                                        setState(() {
-                                          if (likedIndexes.contains(index)) {
-                                            likedIndexes.remove(index);
-                                          } else {
-                                            likedIndexes.add(index);
-                                          }
-                                        });
-                                        await _toggleLike();
-                                      },
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      setState(() {
+                                        if (isLiked) {
+                                          likedIndexes.remove(product.id);
+                                        } else {
+                                          likedIndexes.add(product.id);
+                                        }
+                                      });
+
+                                      await cache.saveData(
+                                        key: "likedIndexes",
+                                        value: likedIndexes
+                                            .map((e) => e.toString())
+                                            .toList(),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: 35.w,
+                                      height: 35.h,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        shape: BoxShape.circle,
+                                      ),
                                       child: Icon(
                                         isLiked
                                             ? Icons.favorite
@@ -161,7 +138,10 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                               ],
                             ),
                           ),
+
                           Gap(3.h),
+
+                          /// price + rating
                           Row(
                             children: [
                               CustomText(
@@ -171,14 +151,23 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                 fontWeight: FontWeight.w600,
                               ),
                               const Spacer(),
+
                               GestureDetector(
-                                onTap: () {
+                                onTap: () async {
                                   setState(() {
-                                    isEvaluated
-                                        ? evaluatedIndexes.remove(index)
-                                        : evaluatedIndexes.add(index);
-                                    _toggleEvaluated();
+                                    if (isEvaluated) {
+                                      evaluatedIndexes.remove(product.id);
+                                    } else {
+                                      evaluatedIndexes.add(product.id);
+                                    }
                                   });
+
+                                  await cache.saveData(
+                                    key: "evaluatedIndexes",
+                                    value: evaluatedIndexes
+                                        .map((e) => e.toString())
+                                        .toList(),
+                                  );
                                 },
                                 child: Icon(
                                   isEvaluated ? Icons.star : Icons.star_outline,
@@ -188,6 +177,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                   size: 24.s,
                                 ),
                               ),
+
                               CustomText(
                                 text: product.rating.toString(),
                                 fontSize: 16.s,
@@ -196,6 +186,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                               ),
                             ],
                           ),
+
                           CustomText(
                             text: product.title,
                             fontSize: 16.s,

@@ -4,6 +4,8 @@ import 'package:gap/gap.dart';
 import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/responsive/extensions.dart';
+import 'package:marketi/core/services/chash_helper.dart';
+import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,60 +20,70 @@ class CustomGridViewProductsPage extends StatefulWidget {
 class _CustomGridViewProductsPageState
     extends State<CustomGridViewProductsPage> {
   // load like
-  _loadLikeStatus() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      likedIndexes =
-          sharedPreferences
-              .getStringList("likedIndex")
-              ?.map((e) => int.parse(e))
-              .toList() ??
-          [];
-    });
-  }
+  // _loadLikeStatus() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     likedIndexes =
+  //         sharedPreferences
+  //             .getStringList("likedIndex")
+  //             ?.map((e) => int.parse(e))
+  //             .toList() ??
+  //         [];
+  //   });
+  // }
 
-  // toggle like
-  _toggleLike() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      List<String> likedSaved = likedIndexes.map((e) => e.toString()).toList();
-      sharedPreferences.setStringList("likedIndex", likedSaved);
-    });
-  }
+  // // toggle like
+  // _toggleLike() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     List<String> likedSaved = likedIndexes.map((e) => e.toString()).toList();
+  //     sharedPreferences.setStringList("likedIndex", likedSaved);
+  //   });
+  // }
 
-  //
-  // evaluation
-  _loadEvaluateStatus() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      evaluatedIndexes =
-          sharedPreferences
-              .getStringList("evaluatedIndexes")
-              ?.map((e) => int.parse(e))
-              .toList() ??
-          [];
-    });
-  }
+  // //
+  // // evaluation
+  // _loadEvaluateStatus() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     evaluatedIndexes =
+  //         sharedPreferences
+  //             .getStringList("evaluatedIndexes")
+  //             ?.map((e) => int.parse(e))
+  //             .toList() ??
+  //         [];
+  //   });
+  // }
 
-  // toggle like
-  _toggleEvaluated() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      List<String> evaluateSaved = evaluatedIndexes
-          .map((e) => e.toString())
-          .toList();
-      sharedPreferences.setStringList("evaluatedIndexes", evaluateSaved);
-    });
-  }
+  // // toggle like
+  // _toggleEvaluated() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     List<String> evaluateSaved = evaluatedIndexes
+  //         .map((e) => e.toString())
+  //         .toList();
+  //     sharedPreferences.setStringList("evaluatedIndexes", evaluateSaved);
+  //   });
+  // }
 
   List<int> likedIndexes = [];
   List<int> evaluatedIndexes = []; // 1
+  final cache = getIt<ChashHelper>();
+
   @override
   void initState() {
     super.initState();
     context.read<AllProductCubit>().getAllProducts(14);
-    _loadEvaluateStatus();
-    _loadLikeStatus();
+    final likedData = (cache.getData(key: "likedIndexes")).cast<String>();
+
+    likedIndexes = likedData.map((e) => int.parse(e)).toList();
+
+    /// ✅ evaluated
+    final evaluatedData = (cache.getData(
+      key: "evaluatedIndexes",
+    )).cast<String>();
+
+    evaluatedIndexes = evaluatedData.map((e) => int.parse(e)).toList();
   }
 
   @override
@@ -144,7 +156,12 @@ class _CustomGridViewProductsPageState
                                             likedIndexes.add(index);
                                           }
                                         });
-                                        await _toggleLike();
+                                        await cache.saveData(
+                                          key: "likedIndexes",
+                                          value: likedIndexes
+                                              .map((e) => e.toString())
+                                              .toList(),
+                                        );
                                       },
                                       child: Icon(
                                         isLiked
@@ -172,13 +189,18 @@ class _CustomGridViewProductsPageState
                               ),
                               const Spacer(),
                               GestureDetector(
-                                onTap: () {
+                                onTap: () async {
                                   setState(() {
                                     isEvaluated
                                         ? evaluatedIndexes.remove(index)
                                         : evaluatedIndexes.add(index);
-                                    _toggleEvaluated();
                                   });
+                                  await cache.saveData(
+                                    key: "evaluatedIndexes",
+                                    value: evaluatedIndexes
+                                        .map((e) => e.toString())
+                                        .toList(),
+                                  );
                                 },
                                 child: Icon(
                                   isEvaluated ? Icons.star : Icons.star_outline,
