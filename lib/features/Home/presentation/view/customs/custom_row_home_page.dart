@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/constants/colors/app_colors.dart';
 import 'package:marketi/core/customs/circle_avatar_custom.dart';
 import 'package:marketi/core/customs/custom_text.dart';
+import 'package:marketi/core/network/api/dio_consumer.dart';
 import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/profile/presentation/view/profile_page.dart';
 import 'package:marketi/features/profile/presentation/view_model/cubit/cubit/profile_cubit.dart';
@@ -47,7 +49,7 @@ class CustomRowHomePage extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (_) => BlocProvider(
-                  create: (context) => ProfileCubit(),
+                  create: (context) => ProfileCubit(DioConsumer(dio: Dio())),
                   child: ProfilePage(),
                 ),
               ),

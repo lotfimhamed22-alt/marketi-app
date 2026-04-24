@@ -7,7 +7,6 @@ import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/services/chash_helper.dart';
 import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomGridViewProductsPage extends StatefulWidget {
   const CustomGridViewProductsPage({super.key});

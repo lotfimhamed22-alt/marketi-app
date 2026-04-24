@@ -1,3 +1,5 @@
+// ignore_for_file: strict_top_level_inference
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ChashHelper {
@@ -26,6 +28,9 @@ class ChashHelper {
   List<dynamic> getData({required String key}) {
     return sharedPreferences.getStringList(key) ?? [];
   }
+  // Map<String,dynamic> getDataToken({required String key}) {
+  //   return sharedPreferences.getString(key) ;
+  // }
 
   // remove
   Future<bool> removeData({required String key}) async {

@@ -1,15 +1,21 @@
 class EndPoints {
-  static const String baseUrl = "https://marketi-api.onrender.com/api/v1/";
-  static const String login = "auth/signIn";
+  static String baseUrl = "https://marketi-api.onrender.com/api/v1/";
+  static String login = "auth/signIn";
 
-  static const String signUp = "auth/signUp";
-  // static const String register = "auth/register";
-  // static const String getProducts = "products";
-  // static const String getCategories = "categories";
-  // static const String getUserProfile = "users/profile";
+  static String signUp = "auth/signUp";
+  // static  String register = "auth/register";
+  // static  String getProducts = "products";
+  // static  String getCategories = "categories";
+  // static  String getUserProfile = "users/profile";
+  // get id /////////////////////////////////////
+
+  // method to get id
+  static String getUserDataEndPoind(id) {
+    return "https://supermarket-dan1.onrender.com/api/v1/portfoilo/userData/$id";
+  }
 }
 
 class ApiKeys {
-  static const String status = "status";
-  static const String errorMassege = "error";
+  static String status = "status";
+  static String errorMassege = "error";
 }
