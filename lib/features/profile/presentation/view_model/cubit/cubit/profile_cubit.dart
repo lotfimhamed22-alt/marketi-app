@@ -2,8 +2,6 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:marketi/core/network/api/api_consumer.dart';
-import 'package:marketi/core/network/api/end_points.dart';
 import 'package:marketi/core/services/chash_helper.dart';
 import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/profile/data/models/profile_model.dart';
@@ -12,23 +10,25 @@ import 'package:meta/meta.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit(this.api) : super(ProfileInitial());
-  final ApiConsumer api;
-
+  ProfileCubit() : super(ProfileInitial());
+  // final ApiConsumer api;
+  var dio = Dio();
   Future<void> getProfileData() async {
-    emit(ProfileLoading());
-    print('load profile');
     try {
-      final response = await api.get(
-        // EndPoints.getUserDataEndPoind(
-        //   getIt<ChashHelper>().getDataToken(key: 'id'),
-        // ),
-        "",
+      emit(ProfileLoading());
+      print('load profile');
+      var response = await dio.get(
+        "https://supermarket-dan1.onrender.com/api/v1/portfoilo/userData",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer ${getIt<ChashHelper>().getToken()}",
+          },
+        ),
       );
-      // final data = UserResponseModel.fromJson(json);
+      final profile = UserResponseModel.fromJson(response.data);
 
-      //  emit(ProfileSuccess(profile: UserResponseModel.fromJson(response.data)));
-      // print(profile.user.name);
+      emit(ProfileSuccess(profile: profile));
+      print(profile.user.name);
     } on DioException catch (e) {
       emit(ProfileFailure(errorMessage: e.toString()));
       print("fail profile");

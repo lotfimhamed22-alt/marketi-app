@@ -1,6 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages, avoid_print
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:marketi/core/services/chash_helper.dart';
+import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/Home/data/models/category_model.dart';
 import 'package:meta/meta.dart';
 part 'category_state.dart';
@@ -16,8 +18,7 @@ class CategoryCubit extends Cubit<CategoryState> {
         "https://supermarket-dan1.onrender.com/api/v1/home/categories",
         options: Options(
           headers: {
-            "Authorization":
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZTBkMmRiYzM2MzQ2MDBjNzQ0OGZjNyIsImlhdCI6MTc3NjM0Mzc0NiwiZXhwIjoxNzc4OTM1NzQ2fQ.BMBcQ3W8adS9Q3jY9LCd0Dsj6FI8pfR3MIT8HO3z0lc",
+            "Authorization": "Bearer ${getIt<ChashHelper>().getToken()}",
           },
         ),
       );

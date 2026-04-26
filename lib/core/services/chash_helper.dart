@@ -28,9 +28,6 @@ class ChashHelper {
   List<dynamic> getData({required String key}) {
     return sharedPreferences.getStringList(key) ?? [];
   }
-  // Map<String,dynamic> getDataToken({required String key}) {
-  //   return sharedPreferences.getString(key) ;
-  // }
 
   // remove
   Future<bool> removeData({required String key}) async {
@@ -45,5 +42,18 @@ class ChashHelper {
   // containes data
   bool containesData({required String key}) {
     return sharedPreferences.containsKey(key);
+  }
+
+  Future<void> saveToken(String token) async {
+    await saveData(key: 'token', value: token);
+  }
+
+  String? getDataToken({required String key}) {
+    return sharedPreferences!.getString(key);
+  }
+
+  /// جلب التوكن
+  String? getToken() {
+    return getDataToken(key: "token");
   }
 }
