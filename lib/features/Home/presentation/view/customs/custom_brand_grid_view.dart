@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_container.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view_model/brands/cubit/cubit/brands_cubit.dart';
 
 class CustomBrandGridView extends StatefulWidget {
@@ -35,7 +35,7 @@ class _CustomBrandGridViewState extends State<CustomBrandGridView> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 4.w,
-                childAspectRatio: 1.4.s,
+                childAspectRatio: 1.4.sp,
               ),
               itemCount: state.brand.list.length,
               itemBuilder: (context, index) {
@@ -56,13 +56,13 @@ class _CustomBrandGridViewState extends State<CustomBrandGridView> {
                         //color: AppColors.myBorderColor,
                         child: CustomText(
                           text: state.brand.list[index].emoji,
-                          fontSize: 50.s,
+                          fontSize: 50.sp,
                         ),
                       ),
                       Gap(8.h),
                       CustomText(
                         text: state.brand.list[index].name,
-                        fontSize: 18.s,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.ContainerColorPrimary,
                       ),

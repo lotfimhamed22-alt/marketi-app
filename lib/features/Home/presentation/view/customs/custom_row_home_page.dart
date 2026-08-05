@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/circle_avatar_custom.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/profile/presentation/view/profile_page.dart';
 
 class CustomRowHomePage extends StatelessWidget {
@@ -35,7 +35,7 @@ class CustomRowHomePage extends StatelessWidget {
         ),
         CustomText(
           text: text ?? "",
-          fontSize: 22.s,
+          fontSize: 22.sp,
           color: AppColors.ContainerColorPrimary,
           fontWeight: FontWeight.bold,
         ),
@@ -74,11 +74,11 @@ class CustomRowHomePage extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      right: 13.s,
-                      top: 5.s,
+                      right: 13.sp,
+                      top: 5.sp,
                       child: CustomText(
                         text: "5",
-                        fontSize: 15.s,
+                        fontSize: 15.sp,
                         color: AppColors.myWhite,
                         fontWeight: FontWeight.bold,
                       ),

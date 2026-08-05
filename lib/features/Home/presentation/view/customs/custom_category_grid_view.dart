@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_container.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
 
 class CustomCategoryGridView extends StatefulWidget {
@@ -45,7 +45,7 @@ class _CustomCategoryGridViewState extends State<CustomCategoryGridView> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: widget.crossAxisCount,
                 crossAxisSpacing: 4.w,
-                childAspectRatio: widget.childAspectRatio.s,
+                childAspectRatio: widget.childAspectRatio.sp,
               ),
               itemCount: state.categoryResponse.list.length,
               itemBuilder: (context, index) {
@@ -72,7 +72,7 @@ class _CustomCategoryGridViewState extends State<CustomCategoryGridView> {
                       Gap(8.h),
                       CustomText(
                         text: state.categoryResponse.list[index].name,
-                        fontSize: 18.s,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
                         color: AppColors.ContainerColorPrimary,
                       ),

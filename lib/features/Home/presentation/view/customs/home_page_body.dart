@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/circle_avatar_custom.dart';
 import 'package:marketi/features/onboarding/presentation/customs/custom_image_on_boarding.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_brand_list_view.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_category_grid_view.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_popular_product.dart';

@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
 
 class CategorySearch extends StatefulWidget {
@@ -59,7 +59,7 @@ class _GridviewPaginationState extends State<CategorySearch> {
                                 text: state is CategorySuccess
                                     ? state.categoryResponse.list[index].name
                                     : "",
-                                fontSize: 18.s,
+                                fontSize: 18.sp,
                                 color: AppColors.paginationColor,
                               ),
                             ),

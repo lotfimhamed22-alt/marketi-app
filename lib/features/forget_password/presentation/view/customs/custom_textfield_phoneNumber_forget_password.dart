@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomTextFieldPhoneNumberForgetPassword extends StatefulWidget {
   const CustomTextFieldPhoneNumberForgetPassword({super.key});
@@ -25,7 +25,7 @@ class _CustomTextFieldPhoneNumberState
       children: [
         CustomText(
           text: "Phone Number",
-          fontSize: 16.s,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.ContainerColorPrimary,
         ),

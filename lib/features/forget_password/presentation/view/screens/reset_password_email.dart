@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/forget_password/presentation/view/customs/custom_app_bar_forget_password_screen.dart';
 import 'package:marketi/features/forget_password/presentation/view/customs/custom_textfield_email.dart';
 import 'package:marketi/features/forget_password/presentation/view/customs/send_code_button.dart';
@@ -46,7 +46,7 @@ class _ForgetPasswordByEmailScreenState
                 CustomText(
                   text:
                       "Please enter your email address to\n\t\t\t\t\t\t\treceive a verification code",
-                  fontSize: 18.s,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: AppColors.myNavy,
                 ),

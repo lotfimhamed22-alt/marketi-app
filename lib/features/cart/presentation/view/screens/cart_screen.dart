@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 
 class Cartscreen extends StatelessWidget {
@@ -34,7 +34,7 @@ class CartBody extends StatelessWidget {
             children: [
               CustomText(
                 text: "Products on Cart",
-                fontSize: 22.s,
+                fontSize: 22.sp,
                 fontWeight: FontWeight.w600,
               ),
             ],
@@ -86,7 +86,7 @@ class _CustomCartProductState extends State<CustomCartProduct> {
                 children: [
                   CustomText(
                     text: "Pampers Swaddlers",
-                    fontSize: 20.s,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                   ),
                   Gap(90.w),
@@ -96,7 +96,7 @@ class _CustomCartProductState extends State<CustomCartProduct> {
               // 2
               CustomText(
                 text: "84 Diapers",
-                fontSize: 18.s,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.myNavy,
               ),
@@ -106,7 +106,7 @@ class _CustomCartProductState extends State<CustomCartProduct> {
                 children: [
                   CustomText(
                     text: "Price: 345,00 EGP",
-                    fontSize: 20.s,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                   ),
                   Gap(90.w),
@@ -114,7 +114,7 @@ class _CustomCartProductState extends State<CustomCartProduct> {
                   Gap(5.w),
                   CustomText(
                     text: "4.9",
-                    fontSize: 20.s,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ],
@@ -134,7 +134,7 @@ class _CustomCartProductState extends State<CustomCartProduct> {
                     child: Icon(
                       Icons.delete,
                       color: AppColors.myRed,
-                      size: 40.s,
+                      size: 40.sp,
                     ),
                   ),
                   Gap(40.w),
@@ -148,7 +148,7 @@ class _CustomCartProductState extends State<CustomCartProduct> {
                     ),
                     child: CustomText(
                       text: "1",
-                      fontSize: 22.s,
+                      fontSize: 22.sp,
                       color: AppColors.myBlue,
                     ),
                   ),
@@ -160,7 +160,11 @@ class _CustomCartProductState extends State<CustomCartProduct> {
                       color: AppColors.backgroundProductColor,
                       borderRadius: BorderRadius.circular(15.r),
                     ),
-                    child: Icon(Icons.add, color: AppColors.myBlue, size: 40.s),
+                    child: Icon(
+                      Icons.add,
+                      color: AppColors.myBlue,
+                      size: 40.sp,
+                    ),
                   ),
                 ],
               ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomTextFieldEmail extends StatefulWidget {
   const CustomTextFieldEmail({super.key, required this.emailController});
@@ -22,7 +22,7 @@ class _CustomTextFieldEmailState extends State<CustomTextFieldEmail> {
       children: [
         CustomText(
           text: "Email",
-          fontSize: 16.5.s,
+          fontSize: 16.5.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.ContainerColorPrimary,
         ),

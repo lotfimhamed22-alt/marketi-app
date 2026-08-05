@@ -2,7 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:marketi/core/constants/strings/strings.dart';
+import 'package:marketi/core/constants/strings.dart';
 import 'package:marketi/features/cart/data/models/product_model_cart.dart';
 import 'package:meta/meta.dart';
 

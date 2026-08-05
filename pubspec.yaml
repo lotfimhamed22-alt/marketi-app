@@ -41,8 +41,18 @@ dependencies:
   hive_flutter: ^1.1.0
   shared_preferences: ^2.5.5
   get_it: ^9.2.1
+  flutter_screenutil: ^5.9.3
+  go_router: ^17.4.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.14.4"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo/logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
   flutter_lints: ^6.0.0
   build_runner: 2.4.13
   hive_generator: ^2.0.1

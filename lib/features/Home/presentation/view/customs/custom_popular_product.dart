@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/services/chash_helper.dart';
 import 'package:marketi/core/services/service_locator.dart';
 import 'package:marketi/features/Home/presentation/view_model/all_product/cubit/all_product_cubit.dart';
@@ -146,7 +146,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                             children: [
                               CustomText(
                                 text: "${product.price} LE",
-                                fontSize: 16.s,
+                                fontSize: 16.sp,
                                 color: AppColors.ContainerColorPrimary,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -174,13 +174,13 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
                                   color: isEvaluated
                                       ? AppColors.myBlue
                                       : AppColors.ContainerColorPrimary,
-                                  size: 24.s,
+                                  size: 24.sp,
                                 ),
                               ),
 
                               CustomText(
                                 text: product.rating.toString(),
-                                fontSize: 16.s,
+                                fontSize: 16.sp,
                                 color: AppColors.ContainerColorPrimary,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -189,7 +189,7 @@ class _CustomPopularProductState extends State<CustomPopularProduct> {
 
                           CustomText(
                             text: product.title,
-                            fontSize: 16.s,
+                            fontSize: 16.sp,
                             color: AppColors.ContainerColorPrimary,
                             fontWeight: FontWeight.w600,
                           ),

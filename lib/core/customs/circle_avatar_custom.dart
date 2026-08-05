@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/responsive/extensions.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CircleAvatarCustom extends StatelessWidget {
   const CircleAvatarCustom({

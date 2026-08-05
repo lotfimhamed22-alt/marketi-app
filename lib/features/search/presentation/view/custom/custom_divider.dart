@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
-import 'package:marketi/core/responsive/extensions.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({super.key});
@@ -12,7 +12,7 @@ class CustomDivider extends StatelessWidget {
       child: Divider(
         height: 30.h,
         color: AppColors.myNavy,
-        thickness: 0.5.s,
+        thickness: 0.5.sp,
         indent: 20,
         endIndent: 20,
       ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/features/onboarding/presentation/customs/custom_image_on_boarding.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       CustomText(
                         text: "Your Name",
-                        fontSize: 16.5.s,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.ContainerColorPrimary,
                       ),
@@ -83,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       CustomText(
                         text: "Username",
-                        fontSize: 16.5.s,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.ContainerColorPrimary,
                       ),
@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       CustomText(
                         text: "Phone Number",
-                        fontSize: 16.5.s,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.ContainerColorPrimary,
                       ),
@@ -148,13 +148,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       CustomText(
                         text: "Email",
-                        fontSize: 16.5.s,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.ContainerColorPrimary,
                       ),
                       CustomTextFormField(
                         readOnly: false,
-
                         hintText: 'You@gmail.com',
                         prefixIcon: Icons.email_outlined,
                         controller: _emailController,
@@ -182,7 +181,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       CustomText(
                         text: "Password",
-                        fontSize: 16.5.s,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.ContainerColorPrimary,
                       ),
@@ -225,7 +224,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       CustomText(
                         text: "Confirm Password",
-                        fontSize: 16.5.s,
+                        fontSize: 16.5.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.ContainerColorPrimary,
                       ),
@@ -286,7 +285,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             )
                           : CustomButton(
                               text: "Sign Up",
-                              fontSize: 20.s,
+                              fontSize: 20.sp,
                               colorText: AppColors.myWhite,
                               colorBackGroundButton: AppColors.myBlue,
                               fontWeight: FontWeight.w800,

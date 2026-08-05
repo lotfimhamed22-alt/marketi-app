@@ -3,11 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/forget_password/presentation/view/customs/custom_app_bar_forget_password_screen.dart';
 import 'package:marketi/features/forget_password/presentation/view/screens/new_password.dart';
 import 'package:marketi/features/forget_password/presentation/view_model/create_password/cubit/create_password_cubit.dart';
@@ -42,7 +42,7 @@ class _VerificationCodeByEmailState extends State<VerificationCodeByEmail> {
             CustomText(
               text:
                   "Please enter the 6 digit code\n\t\t\tsent to: ${widget.email}",
-              fontSize: 18.s,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
               color: AppColors.myNavy,
             ),
@@ -102,7 +102,7 @@ class _VerificationCodeByEmailState extends State<VerificationCodeByEmail> {
                     ? Center(child: CircularProgressIndicator())
                     : CustomButton(
                         text: "Verify Code",
-                        fontSize: 22.s,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.bold,
                         colorText: AppColors.myWhite,
                         colorBackGroundButton: AppColors.myBlue,

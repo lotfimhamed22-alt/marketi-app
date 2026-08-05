@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 import 'package:marketi/features/Home/presentation/view_model/category/cubit/cubit/category_cubit.dart';
 import 'package:marketi/features/search/presentation/view/custom/category_search.dart';
@@ -59,7 +59,7 @@ class _SearchBodyState extends State<SearchBody> {
                 children: [
                   CustomText(
                     text: "Popular Search",
-                    fontSize: 20.s,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                   ),
                   IconButton(

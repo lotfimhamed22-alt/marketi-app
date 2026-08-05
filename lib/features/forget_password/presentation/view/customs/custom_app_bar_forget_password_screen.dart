@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomAppBarForgetPasswordScreen extends StatelessWidget {
   const CustomAppBarForgetPasswordScreen({super.key});
@@ -33,7 +33,7 @@ class CustomAppBarForgetPasswordScreen extends StatelessWidget {
         Gap(15.w),
         CustomText(
           text: "Forgot Password",
-          fontSize: 21.s,
+          fontSize: 21.sp,
           color: AppColors.myNavy,
           fontWeight: FontWeight.w500,
         ),

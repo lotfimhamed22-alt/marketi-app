@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 
 class SendCodeButton extends StatelessWidget {
   const SendCodeButton({super.key, this.onPressed});
@@ -11,7 +11,7 @@ class SendCodeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       text: "Send Code",
-      fontSize: 18.s,
+      fontSize: 18.sp,
       fontWeight: FontWeight.w700,
       colorText: AppColors.myWhite,
       colorBackGroundButton: AppColors.myBlue,

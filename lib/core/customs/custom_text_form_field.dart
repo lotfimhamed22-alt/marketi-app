@@ -1,8 +1,6 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
-import 'package:marketi/core/responsive/extensions.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/features/search/presentation/view/screen/search_screen.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -54,7 +52,7 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hintText,
         labelStyle: TextStyle(
           color: AppColors.labeTextColor,
-          fontSize: 16.s,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w500,
         ),
         suffixStyle: TextStyle(color: suffixColor),

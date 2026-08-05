@@ -3,15 +3,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:marketi/bottom_navigation_bar.dart';
 import 'package:marketi/core/network/api/dio_consumer.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/features/auth/presentation/view/customs/custom_row_text.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/onboarding/presentation/customs/custom_image_on_boarding.dart';
 import 'package:marketi/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:marketi/features/auth/presentation/view_model/sign_up_cubit/cubit/sign_up_cubit.dart';
@@ -132,7 +132,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         ? Center(child: CircularProgressIndicator())
                         : CustomButton(
                             text: "Log In",
-                            fontSize: 20.s,
+                            fontSize: 20.sp,
                             colorText: AppColors.myWhite,
                             colorBackGroundButton: isCkecked
                                 ? AppColors.myBlue
@@ -158,7 +158,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   children: [
                     CustomText(
                       text: "Are you new in Marketi ",
-                      fontSize: 16.s,
+                      fontSize: 16.sp,
                       color: AppColors.myNavy,
                     ),
                     GestureDetector(
@@ -176,7 +176,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       },
                       child: CustomText(
                         text: "register?",
-                        fontSize: 16.s,
+                        fontSize: 16.sp,
                         color: AppColors.light_blue,
                       ),
                     ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomNotfoundSearch extends StatelessWidget {
   const CustomNotfoundSearch({super.key});
@@ -18,7 +18,7 @@ class CustomNotfoundSearch extends StatelessWidget {
         //
         CustomText(
           text: "Oops Not Found!",
-          fontSize: 28.s,
+          fontSize: 28.sp,
           fontWeight: FontWeight.bold,
         ),
         //
@@ -26,14 +26,14 @@ class CustomNotfoundSearch extends StatelessWidget {
         CustomText(
           text:
               "Check our big offers, fresh products\n\t\t\t\t\t\t\tand fill your cart with items",
-          fontSize: 18.s,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w300,
           color: AppColors.myNavy,
         ),
         Gap(30.h),
         CustomButton(
           text: "Continue Shopping",
-          fontSize: 20.s,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
           colorText: AppColors.myWhite,
           colorBackGroundButton: AppColors.myBlue,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/core/customs/custom_container.dart';
 
 class CustomRowContainer extends StatelessWidget {

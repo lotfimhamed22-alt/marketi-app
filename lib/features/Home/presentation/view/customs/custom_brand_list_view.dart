@@ -1,10 +1,10 @@
 // ignore_for_file: avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_container.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view_model/brands/cubit/cubit/brands_cubit.dart';
 
 class CustomBrandListView extends StatefulWidget {
@@ -48,7 +48,7 @@ class _CustomBrandListViewState extends State<CustomBrandListView> {
                     ),
                     child: CustomText(
                       text: state.brand.list[index].emoji,
-                      fontSize: 50.s,
+                      fontSize: 50.sp,
                     ),
                   ),
                 );

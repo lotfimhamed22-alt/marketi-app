@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/customs/custom_text_form_field.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 import 'package:marketi/features/forget_password/presentation/view/screens/congratulations.dart';
 import 'package:marketi/features/forget_password/presentation/view_model/create_password/cubit/create_password_cubit.dart';
@@ -42,7 +42,7 @@ class _NewPasswordState extends State<NewPassword> {
             CustomText(
               text:
                   "\t\t\t\tNew password must be\ndifferent from last password",
-              fontSize: 18.s,
+              fontSize: 18.sp,
               fontWeight: FontWeight.bold,
               color: AppColors.myNavy,
             ),
@@ -52,7 +52,7 @@ class _NewPasswordState extends State<NewPassword> {
               children: [
                 CustomText(
                   text: "Password",
-                  fontSize: 16.5.s,
+                  fontSize: 16.5.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.ContainerColorPrimary,
                 ),
@@ -95,7 +95,7 @@ class _NewPasswordState extends State<NewPassword> {
               children: [
                 CustomText(
                   text: "Confirm Password",
-                  fontSize: 16.5.s,
+                  fontSize: 16.5.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.ContainerColorPrimary,
                 ),
@@ -152,7 +152,7 @@ class _NewPasswordState extends State<NewPassword> {
                     ? Center(child: CircularProgressIndicator())
                     : CustomButton(
                         text: "Save Password",
-                        fontSize: 22.s,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.bold,
                         colorText: AppColors.myWhite,
                         colorBackGroundButton: AppColors.myBlue,

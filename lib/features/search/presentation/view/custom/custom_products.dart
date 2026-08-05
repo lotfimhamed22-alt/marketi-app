@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/cart/data/models/product_model_cart.dart';
 import 'package:marketi/features/cart/presentation/view_model/cubit/add_cart/cubit/add_product_cubit.dart';
 import 'package:marketi/features/search/presentation/view/custom/custom_divider.dart';
@@ -57,7 +57,7 @@ class _CustomProductsState extends State<CustomProducts> {
                           children: [
                             CustomText(
                               text: widget.filteredList[index].category,
-                              fontSize: 18.s,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
                             ),
 
@@ -86,13 +86,13 @@ class _CustomProductsState extends State<CustomProducts> {
                         Gap(5.h),
                         CustomText(
                           text: widget.filteredList[index].title,
-                          fontSize: 15.s,
+                          fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
                         ),
                         // Gap(10.h),
                         CustomText(
                           text: widget.filteredList[index].brand,
-                          fontSize: 15.s,
+                          fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
                         ),
                         // Gap(10.h),
@@ -100,7 +100,7 @@ class _CustomProductsState extends State<CustomProducts> {
                           children: [
                             CustomText(
                               text: "${widget.filteredList[index].price} LE",
-                              fontSize: 16.s,
+                              fontSize: 16.sp,
                               color: AppColors.ContainerColorPrimary,
                               fontWeight: FontWeight.w600,
                             ),
@@ -119,13 +119,13 @@ class _CustomProductsState extends State<CustomProducts> {
                                 color: isEvaluated
                                     ? AppColors.myBlue
                                     : AppColors.ContainerColorPrimary,
-                                size: 24.s,
+                                size: 24.sp,
                               ),
                             ),
                             CustomText(
                               text: widget.filteredList[index].rating
                                   .toString(),
-                              fontSize: 16.s,
+                              fontSize: 16.sp,
                               color: AppColors.ContainerColorPrimary,
                               fontWeight: FontWeight.w600,
                             ),
@@ -159,7 +159,7 @@ class _CustomProductsState extends State<CustomProducts> {
                                           )
                                         : CustomButton(
                                             text: isAdded ? "✔️" : "Add",
-                                            fontSize: 20.s,
+                                            fontSize: 20.sp,
                                             fontWeight: FontWeight.w400,
                                             colorText: AppColors.myBlue,
                                             colorBackGroundButton: isAdded

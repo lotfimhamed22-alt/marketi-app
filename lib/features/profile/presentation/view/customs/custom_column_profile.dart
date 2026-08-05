@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 
 class CustomColumnProfile extends StatelessWidget {
   const CustomColumnProfile({
@@ -24,7 +24,7 @@ class CustomColumnProfile extends StatelessWidget {
         leading: Icon(icon, size: 30.w, color: AppColors.myNavy),
         title: CustomText(
           text: title,
-          fontSize: 18.s,
+          fontSize: 18.sp,
           color: AppColors.myBlack,
         ),
         trailing: Container(

@@ -1,15 +1,13 @@
-// ignore_for_file: avoid_print
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/core/customs/custom_row_container.dart';
 import 'package:marketi/core/customs/custom_text.dart';
 import 'package:marketi/core/network/api/dio_consumer.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/auth/presentation/view/screens/log_in_screen.dart';
 import 'package:marketi/features/auth/presentation/view_model/signin_cubit/cubit/sign_in_cubit.dart';
 import 'package:marketi/features/onboarding/data/static.dart';
@@ -31,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         children: [
           SizedBox(
-            height: 800.h,
+            height: 600.h,
             child: PageView.builder(
               controller: controller,
               onPageChanged: (value) {
@@ -45,11 +43,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(
                     children: [
-                      Gap(180.h),
+                      Gap(50.h),
                       Image.asset(
                         onboardingList[index].imageUrl!,
                         width: 600.w,
-                        height: 320.h,
+                        height: 220.h,
                         fit: BoxFit.contain,
                       ),
                       Gap(20.h),
@@ -73,7 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Gap(20.h),
                       CustomText(
                         text: onboardingList[index].text.toString(),
-                        fontSize: 30.s,
+                        fontSize: 30.sp,
                         fontWeight: FontWeight.bold,
                       ),
                       Gap(30.h),
@@ -85,7 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: AppColors.ContainerColorPrimary,
-                            fontSize: 20.s,
+                            fontSize: 20.sp,
                           ),
                         ),
                       ),
@@ -120,7 +118,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               }
             },
             text: currentIndex == 2 ? 'Get Started' : 'Next',
-            fontSize: 18.s,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w500,
             colorText: AppColors.myWhite,
             colorBackGroundButton: AppColors.myBlue,

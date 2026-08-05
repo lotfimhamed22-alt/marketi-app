@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 import 'package:marketi/features/profile/presentation/view/customs/custom_column_profile.dart';
 import 'package:marketi/features/profile/presentation/view_model/cubit/cubit/profile_cubit.dart';
@@ -69,12 +69,12 @@ class _ProfileBodyState extends State<ProfileBody> {
                   Gap(15.h),
                   CustomText(
                     text: state.profile.user.name,
-                    fontSize: 25.s,
+                    fontSize: 25.sp,
                     fontWeight: FontWeight.bold,
                   ),
                   CustomText(
                     text: state.profile.user.email,
-                    fontSize: 20.s,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w500,
                   ),
                   CustomColumnProfile(

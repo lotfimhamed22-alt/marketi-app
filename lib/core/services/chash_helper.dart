@@ -49,7 +49,7 @@ class ChashHelper {
   }
 
   String? getDataToken({required String key}) {
-    return sharedPreferences!.getString(key);
+    return sharedPreferences.getString(key);
   }
 
   /// جلب التوكن

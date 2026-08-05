@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:marketi/core/constants/colors/app_colors.dart';
+import 'package:marketi/core/themes/app_colors.dart';
 import 'package:marketi/core/customs/custom_button.dart';
 import 'package:marketi/features/onboarding/presentation/customs/custom_image_on_boarding.dart';
 import 'package:marketi/core/customs/custom_text.dart';
-import 'package:marketi/core/responsive/extensions.dart';
 import 'package:marketi/features/Home/presentation/view/customs/custom_row_home_page.dart';
 
 class Congratulations extends StatelessWidget {
@@ -38,14 +38,14 @@ class CongratulationsBody extends StatelessWidget {
           Gap(30.h),
           CustomText(
             text: "Congratulations",
-            fontSize: 24.s,
+            fontSize: 24.sp,
             fontWeight: FontWeight.bold,
           ),
           Gap(20.h),
           CustomText(
             text:
                 "You have updated the password. please\n login again with your latest password",
-            fontSize: 20.s,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.myNavy,
           ),
